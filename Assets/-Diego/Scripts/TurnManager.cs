@@ -25,19 +25,17 @@ namespace MSVJ1.Diego
             controllerPlayer2 = prefabPlayer2.GetComponent<CharacterController>();
 
             currentTurn = (int)Random.Range(1, 3);
-            Debug.Log(currentTurn);
+            Debug.Log("Empieza jugando Player" + currentTurn);
 
             if (currentTurn == 1)
             {
-                DisableController(controllerPlayer1);
-                EnableController(controllerPlayer2);
-                currentTurn = 2;
+                EnableController(controllerPlayer1);
+                DisableController(controllerPlayer2);
             }
             else if (currentTurn == 2)
             {
-                DisableController(controllerPlayer2);
-                EnableController(controllerPlayer1);
-                currentTurn = 1;
+                EnableController(controllerPlayer2);
+                DisableController(controllerPlayer1);
             }
 
             ResetTimer();
@@ -47,22 +45,22 @@ namespace MSVJ1.Diego
         {
             if (timer >= turnDuration && doOnce)
             {
-                Debug.Log("Se termino el turno");
-
                 if (currentTurn == 1)
                 {
-                    DisableController(controllerPlayer1);
                     EnableController(controllerPlayer2);
+                    DisableController(controllerPlayer1);
                     currentTurn = 2;
                 }
                 else if (currentTurn == 2)
                 {
-                    DisableController(controllerPlayer2);
                     EnableController(controllerPlayer1);
+                    DisableController(controllerPlayer2);
                     currentTurn = 1;
                 }
 
                 doOnce = false;
+
+                Debug.Log("Comienza el turno de Player" + currentTurn);
 
                 ResetTimer();
             }
