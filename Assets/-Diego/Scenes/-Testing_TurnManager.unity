@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabPlayer1: {fileID: 1798650668}
   prefabPlayer2: {fileID: 1910515706}
-  startDuration: 3
+  startDuration: 5
   movementDuration: 10
   shootDuration: 10
   textText: {fileID: 112518435}
