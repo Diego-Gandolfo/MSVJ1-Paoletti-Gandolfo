@@ -16,7 +16,6 @@ namespace MSVJ1.Diego
         private ShootingController shootingControllerPlayer2 = null;
 
         [Header("Turns Settings")]
-        private int currentTurn;
         [SerializeField] private float startDuration = 0f;
         private float startTimer = 0f;
         private bool canStart = true;
@@ -26,6 +25,7 @@ namespace MSVJ1.Diego
         [SerializeField] private float shootDuration = 0f;
         private float shootTimer = 0f;
         private bool canShoot = false;
+        private int currentTurn;
 
         [Header("Canvas Settings")]
         [SerializeField] private Text textText = null;

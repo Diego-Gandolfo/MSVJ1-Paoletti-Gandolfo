@@ -154,7 +154,7 @@ MonoBehaviour:
   prefabPlayer2: {fileID: 1910515706}
   startDuration: 3
   movementDuration: 10
-  shootDuration: 5
+  shootDuration: 10
   textText: {fileID: 112518435}
   textNumber: {fileID: 1560297514}
 --- !u!4 &57639996
