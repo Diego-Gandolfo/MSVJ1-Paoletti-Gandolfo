@@ -6,8 +6,12 @@ namespace MSVJ1.Diego
 {
     public class ShootingController : MonoBehaviour
     {
-        [SerializeField] private Transform spawnpoint = null;
-        [SerializeField] private GameObject prefabProyectile = null;
+        [Header("Projectile Settings")]
+        [SerializeField] private ProjectileBehavior projectile = null; // Prefab del Proyectil
+        [SerializeField] private Transform projectileSpawnPoint = null; // El Spawnpoint donde se Instanciara el Proyectil
+        [SerializeField] private float projectileForce = 0f; // La potencia inicial con la que sale disparado el Proyectil
+        [SerializeField] private float projectileForceIncrement = 0f; // Valor que se le va sumando a la potencia del disparo del Proyectil
+        private float currentForce = 0f; // Donde iremos almacenando la potencia actual acumulada
 
         private void Update()
         {
@@ -17,9 +21,16 @@ namespace MSVJ1.Diego
 
             transform.right = direction; // Actualizamos el Transform para que mire al puntero del Mouse
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space)) // Al presionar
+                currentForce = projectileForce; // Inicializamos currentForce
+
+            if (Input.GetKey(KeyCode.Space)) // Al mantener presionado
+                currentForce += projectileForceIncrement; // Incrementamos la currentForce
+
+            if (Input.GetKeyUp(KeyCode.Space)) // Al soltar
             {
-                Instantiate(prefabProyectile, spawnpoint.position, transform.rotation);
+                ProjectileBehavior projectileClone = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation); // Instanciamos el Proyectil
+                projectileClone.DoThrowGranade(transform.right, currentForce); // Le pasamos la direccion y la potencia con la que tiene que ser lanzado
             }
         }
     }
