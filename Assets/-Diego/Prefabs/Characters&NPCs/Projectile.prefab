@@ -43,7 +43,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2209294293621570884}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 49992cb4ad5823b45bff32e2b0f3a6a5, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0.25
+  m_AngularDrag: 0.25
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c066dc8011a8d9144bc1529c123e3090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVelocityMagnitude: 0.1
+  minVelocityMagnitude: 0.25
   exploteEffect: {fileID: 5828645605230735396, guid: ea769c27fdd28dd408d5b4064438f2e2,
     type: 3}
 --- !u!1 &5492354499459346895
