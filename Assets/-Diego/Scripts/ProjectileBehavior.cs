@@ -7,11 +7,11 @@ namespace MSVJ1.Diego
 {
     public class ProjectileBehavior : MonoBehaviour
     {
-        [SerializeField] private float minVelocityMagnitude = 0f;
-        private Vector2 lastVelocity; // La ultima velocidad registrada
-        [SerializeField] private GameObject exploteEffect; // Efecto de Particulas para la Explosion
+        [SerializeField] private float minVelocityMagnitude = 0f; // A que velocidad de Velocity va a Explotar, si Velocity está por debajo de este valor Explota
+        private Vector2 lastVelocity = Vector2.zero; // La ultima velocidad registrada
+        [SerializeField] private GameObject exploteEffect = null; // Efecto de Particulas para la Explosion
         private bool canExplote = false; // Si puede explotar
-        private Rigidbody2D rb2D; // Nuestro Rigidbody
+        private Rigidbody2D rb2D = null; // Nuestro Rigidbody
 
         private void Awake()
         {
@@ -45,10 +45,10 @@ namespace MSVJ1.Diego
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            var speed = lastVelocity.magnitude / 2;
-            var direction = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal);
+            var speed = lastVelocity.magnitude / 2; // Almacenamos en speed la mitad de la magnitud de la Velocity actual
+            var direction = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal); // Calculamos la nueva dirección
 
-            rb2D.velocity = direction * speed;
+            rb2D.velocity = direction * speed; // Hacemos que la velocity sea igual a la nueva dirección * speed
         }
     }
 }
