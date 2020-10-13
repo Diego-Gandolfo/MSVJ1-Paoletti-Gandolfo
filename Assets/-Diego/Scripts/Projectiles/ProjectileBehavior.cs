@@ -20,14 +20,14 @@ namespace MSVJ1.Diego
 
         private void FixedUpdate()
         {
-            lastVelocity = rb2D.velocity; // Capturamos la velocidad actual y la guardamos como la ultima velocidad registrada
-            
-            if (canExplote && rb2D.velocity.magnitude <= minVelocityMagnitude) // Si puede explotar y la magnitud de velocidad actual es menor o igual a la velocidad minima
+            if (canExplote && Mathf.Abs(rb2D.velocity.magnitude) <= minVelocityMagnitude && Mathf.Abs(lastVelocity.magnitude) <= minVelocityMagnitude) // Si puede explotar y la magnitud absoluta de velocidad actual y de la ultima velocidad es menor o igual a la velocidad minima
             {
                 Instantiate(exploteEffect, transform.position, transform.rotation); // Instanciar Efecto de Particulas para la Explosion
                 // TODO: Hacer Daño de Proyectil
                 Destroy(gameObject); // Destruir este Proyectil
             }
+            
+            lastVelocity = rb2D.velocity; // Capturamos la velocidad actual y la guardamos como la ultima velocidad registrada
         }
 
         public void DoThrowGranade(Vector2 direction, float force) // Versión Publica del ThrowGranade
