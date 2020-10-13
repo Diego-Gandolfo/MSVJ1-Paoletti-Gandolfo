@@ -131,6 +131,8 @@ namespace MSVJ1.Diego
                 movementTimer = movementDuration;
                 shootTimer = shootDuration;
 
+                // TODO: TurnManager canStart
+                // Tiene que ser true cuando el Proyectil exploto
                 canStart = true;
             }
         }
