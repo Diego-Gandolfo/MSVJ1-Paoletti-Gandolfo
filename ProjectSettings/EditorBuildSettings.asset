@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/-Diego/Scenes/-Testing_TurnManager.unity
+    guid: 576e088af7b5d7249a1d103117aa055b
   m_configObjects: {}
