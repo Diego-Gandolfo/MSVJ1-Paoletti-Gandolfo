@@ -104,7 +104,7 @@ namespace MSVJ1.Diego
             }
 
             // Shooting
-            if (canShoot && (Input.GetKeyDown(KeyCode.Space) || shootTimer <= 0))
+            if (canShoot && (Input.GetKeyUp(KeyCode.Space) || shootTimer <= 0))
             {
                 canShoot = false;
 
