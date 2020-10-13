@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c066dc8011a8d9144bc1529c123e3090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVelocityMagnitude: 0.25
+  minVelocityMagnitude: 0.15
   exploteEffect: {fileID: 5828645605230735396, guid: ea769c27fdd28dd408d5b4064438f2e2,
     type: 3}
 --- !u!1 &5492354499459346895

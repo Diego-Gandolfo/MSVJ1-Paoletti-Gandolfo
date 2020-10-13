@@ -6,11 +6,11 @@ namespace MSVJ1.Diego
 {
     public class AutoDestroy : MonoBehaviour
     {
-        [SerializeField] private float timeToDestroy = 600f;
+        [SerializeField] private float timeToDestroy = 600f; // Cuanto tiempo pasa antes de que se destruya
 
         private void Start()
         {
-            Destroy(gameObject, timeToDestroy);
+            Destroy(gameObject, timeToDestroy); // Nos destruimos cuando pasa el tiempo pasado por la variable
         }
     }
 }
