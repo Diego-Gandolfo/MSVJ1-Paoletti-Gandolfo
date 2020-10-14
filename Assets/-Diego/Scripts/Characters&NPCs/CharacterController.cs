@@ -18,7 +18,7 @@ namespace MSVJ1.Diego
         {
             // Movement
             float xMovement = Input.GetAxis("Horizontal") * (movementSpeed); // Tomamos el movimiento en X
-            rb2D.velocity = new Vector2(xMovement, 0); // Igualamos nuestra velocidad al movimiento en X
+            rb2D.velocity = new Vector2(xMovement, rb2D.velocity.y); // Igualamos nuestra velocidad al movimiento en X
 
             // Hay dos pequeños problemas si ponemos superficies inclinadas:
             // 1) Si se detiene a mitad de la subida al dejar de moverse se va deslizando hacia abajo
