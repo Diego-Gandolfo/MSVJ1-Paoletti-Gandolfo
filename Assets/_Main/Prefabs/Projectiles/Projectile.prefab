@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3308121312964300764}
   - component: {fileID: 1438036769112955562}
   - component: {fileID: 8381220552497824608}
-  - component: {fileID: 8569438505418765918}
+  - component: {fileID: 5378237058447744299}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -43,7 +43,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2209294293621570884}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 49992cb4ad5823b45bff32e2b0f3a6a5, type: 2}
+  m_Material: {fileID: 6200000, guid: f7fa54cea82d4d046ad6a93628dac41a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -61,17 +61,17 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 0.07068584
   m_LinearDrag: 0.25
   m_AngularDrag: 0.25
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f7fa54cea82d4d046ad6a93628dac41a, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8569438505418765918
+--- !u!114 &5378237058447744299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -80,12 +80,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2209294293621570884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c066dc8011a8d9144bc1529c123e3090, type: 3}
+  m_Script: {fileID: 11500000, guid: bd9d297d24d03f24fb06a9c3ecdefdef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minVelocityMagnitude: 0.15
-  exploteEffect: {fileID: 5828645605230735396, guid: ea769c27fdd28dd408d5b4064438f2e2,
+  exploteEffect: {fileID: 5828645605230735396, guid: cbe33342fe328244fa152d23091342e5,
     type: 3}
+  inertia: 2
 --- !u!1 &5492354499459346895
 GameObject:
   m_ObjectHideFlags: 0

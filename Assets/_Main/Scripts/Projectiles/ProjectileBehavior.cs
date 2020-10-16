@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace MSVJ1.Diego
+namespace MSVJ1.Main
 {
     public class ProjectileBehavior : MonoBehaviour
     {
