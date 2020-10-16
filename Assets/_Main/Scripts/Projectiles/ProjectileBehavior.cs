@@ -7,12 +7,12 @@ namespace MSVJ1.Main
 {
     public class ProjectileBehavior : MonoBehaviour
     {
-        [SerializeField] private float minVelocityMagnitude = 0f; // A que velocidad de Velocity va a Explotar, si Velocity está por debajo de este valor Explota
+        [SerializeField] private float minVelocityMagnitude = 0.15f; // A que velocidad de Velocity va a Explotar, si Velocity está por debajo de este valor Explota
         private Vector2 lastVelocity = Vector2.zero; // La ultima velocidad registrada
         [SerializeField] private GameObject exploteEffect = null; // Efecto de Particulas para la Explosion
         private bool canExplote = false; // Si puede explotar
         private Rigidbody2D rb2D = null; // Nuestro Rigidbody
-        [SerializeField] private float inertia = 0f;
+        [SerializeField] private float inertia = 2f;
 
         private void Awake()
         {

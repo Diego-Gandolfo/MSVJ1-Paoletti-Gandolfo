@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Projectile
   layers:
   - Default
   - TransparentFX
@@ -13,9 +15,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Scene
+  - Projectile
   - 
   - 
   - 
@@ -44,8 +46,14 @@ TagManager:
   - name: Background
     uniqueID: 1286073231
     locked: 0
+  - name: Scene
+    uniqueID: 1798742239
+    locked: 0
   - name: Player
     uniqueID: 1030494483
+    locked: 0
+  - name: Projectile
+    uniqueID: 1213853057
     locked: 0
   - name: ProjectileFX
     uniqueID: 1569830919

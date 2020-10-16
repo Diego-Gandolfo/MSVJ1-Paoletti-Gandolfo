@@ -6,7 +6,7 @@ namespace MSVJ1.Main
 {
     public class CharacterController : MonoBehaviour
     {
-        [SerializeField] private float movementSpeed = 0f; // Velocidad de Movimiento
+        [SerializeField] private float movementSpeed = 3f; // Velocidad de Movimiento
         private Rigidbody2D rb2D = null; // Nuestro Rigidbody
 
         private void Awake()

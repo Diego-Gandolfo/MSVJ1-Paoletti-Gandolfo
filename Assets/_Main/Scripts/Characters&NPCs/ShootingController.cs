@@ -9,8 +9,8 @@ namespace MSVJ1.Main
         [Header("Projectile Settings")]
         [SerializeField] private ProjectileBehavior projectile = null; // Prefab del Proyectil
         [SerializeField] private Transform projectileSpawnPoint = null; // El Spawnpoint donde se Instanciara el Proyectil
-        [SerializeField] private float projectileForce = 0f; // La potencia inicial con la que sale disparado el Proyectil
-        [SerializeField] private float projectileForceIncrement = 0f; // Valor que se le va sumando a la potencia del disparo del Proyectil
+        [SerializeField] private float projectileForce = 1f; // La potencia inicial con la que sale disparado el Proyectil
+        [SerializeField] private float projectileForceIncrement = 0.25f; // Valor que se le va sumando a la potencia del disparo del Proyectil
         private float currentForce = 0f; // Donde iremos almacenando la potencia actual acumulada
 
         private void Update()

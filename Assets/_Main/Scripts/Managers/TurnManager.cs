@@ -14,11 +14,11 @@ namespace MSVJ1.Main
         private ShootingController shootingController = null; // Para almacenar el ShootingController de los Players
 
         [Header("Turns Settings")]
-        [SerializeField] private float startDuration = 0f; // Cuanto debe de esperar desde que termina un turno hasta que empieza el siguiente
+        [SerializeField] private float startDuration = 5f; // Cuanto debe de esperar desde que termina un turno hasta que empieza el siguiente
         private bool canStart = true; // Si puede empezar con la sección de Start
-        [SerializeField] private float movementDuration = 0f; // Cuanto tiempo tienen para Moverse
+        [SerializeField] private float movementDuration = 10f; // Cuanto tiempo tienen para Moverse
         private bool canMove = false; // Si puede empezar con la sección de Movimiento
-        [SerializeField] private float shootDuration = 0f; // Cuanto tiempo tienen para Disparar
+        [SerializeField] private float shootDuration = 10f; // Cuanto tiempo tienen para Disparar
         private bool canShoot = false; // Si puede empezar con la sección de Disparar
         private int currentTurn; // De quien es el Turno Actual
         private float timer = 0f; // Para llevar el Contador de tiempo

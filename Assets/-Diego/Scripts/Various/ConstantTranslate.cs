@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace MSVJ1.Diego
 {
-    public class ConstantMovement : MonoBehaviour
+    public class ConstantTranslate : MonoBehaviour
     {
         [SerializeField] private Vector3 speed = Vector3.zero; // Para poder asignar una velocidad en cualquiera de los 3 ejes
 
