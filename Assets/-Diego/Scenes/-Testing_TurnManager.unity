@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 1497954524}
   - component: {fileID: 1497954523}
   - component: {fileID: 1497954522}
+  - component: {fileID: 1497954525}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -390,6 +391,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1497954525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497954521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da2bb04a926c8a74d84cbb1770b97ac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraOffset: {x: 0, y: 3, z: -10}
 --- !u!1 &1545677165
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +454,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5580957072464921397, guid: a9d4a04874f2eea4fb36927451624f72,
+        type: 3}
+      propertyPath: cameraManager
+      value: 
+      objectReference: {fileID: 1497954525}
     - target: {fileID: 5779510005149460848, guid: a9d4a04874f2eea4fb36927451624f72,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -500,11 +519,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterTank (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 5779510005452259761, guid: a9d4a04874f2eea4fb36927451624f72,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9d4a04874f2eea4fb36927451624f72, type: 3}
 --- !u!1 &1798650668 stripped
@@ -520,6 +534,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5580957072464921397, guid: a9d4a04874f2eea4fb36927451624f72,
+        type: 3}
+      propertyPath: cameraManager
+      value: 
+      objectReference: {fileID: 1497954525}
     - target: {fileID: 5779510005149460848, guid: a9d4a04874f2eea4fb36927451624f72,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -785,6 +804,11 @@ PrefabInstance:
       propertyPath: textNumber
       value: 
       objectReference: {fileID: 1560297514}
+    - target: {fileID: 7541401945851237579, guid: da95b53eb7f4cb942b403043be5d93b3,
+        type: 3}
+      propertyPath: cameraManager
+      value: 
+      objectReference: {fileID: 1497954525}
     - target: {fileID: 7541401945851237580, guid: da95b53eb7f4cb942b403043be5d93b3,
         type: 3}
       propertyPath: m_LocalPosition.x

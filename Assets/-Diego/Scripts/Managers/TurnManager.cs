@@ -27,6 +27,9 @@ namespace MSVJ1.Diego
         [SerializeField] private Text textText = null; // El Texto del Canvas que usamos para los Titulos o Mensajes
         [SerializeField] private Text textNumber = null; // El Texto del Canvas que usamos para el Contador
 
+        [Header("Camera Settings")]
+        [SerializeField] private CameraManager cameraManager = null;
+
         private void Start()
         {
             currentTurn = Random.Range(1, 3); // Asignamos de forma aleatoria el Turno
@@ -81,9 +84,11 @@ namespace MSVJ1.Diego
             }
 
             // Shooting
-            if (canShoot && (Input.GetKeyUp(KeyCode.Space) || timer <= 0)) // Si termino de Contar o toco el Space, y si puede Disparar
+            if (canShoot && (shootingController.doneShoot || timer <= 0)) // Si termino de Contar o toco el Space, y si puede Disparar
             {
                 canShoot = false; // Lo ponemos en FALSE porque ya está haciendo el Disparar
+
+                shootingController.doneShoot = false; 
 
                 shootingController.enabled = false; // Desactivamos el ShootingController
             }
@@ -96,7 +101,7 @@ namespace MSVJ1.Diego
             // Finish Turn
             // TODO: TurnManager Finish Turn
             // Tiene que ser cuando el Proyectil exploto
-            if (!canStart && !canMove && !canShoot) // Momentaneamente, si ya termino con todas las fases
+            if (!canStart && !canMove && !canShoot && shootingController.doneExplotion) // Momentaneamente, si ya termino con todas las fases
             {
                 currentTurn = currentTurn == 1 ? 2 : 1; // Si es el Turno del Jugador1 que ahora currentTurns sea 2 y si no es el Turno del Jugador1 entonces que ahora currentTurns sea 1
 
@@ -114,6 +119,7 @@ namespace MSVJ1.Diego
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             shootingController = player1.GetComponentInChildren<ShootingController>(); // Obtenemos el ShootingController del Player 1
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
+            cameraManager.MoveCamera(player1);
         }
 
         private void AsignTurnPlayer2(GameObject player2) // Asignamos los Componentes al Jugador2
@@ -122,6 +128,7 @@ namespace MSVJ1.Diego
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             characterController = player2.GetComponent<CharacterController>(); // Obtenemos el CharactgerController del Player 2
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
+            cameraManager.MoveCamera(player2);
         }
 
         private void DoTimer() // Hacemos el Timer

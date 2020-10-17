@@ -12,6 +12,11 @@ namespace MSVJ1.Diego
         [SerializeField] private float projectileForce = 0f; // La potencia inicial con la que sale disparado el Proyectil
         [SerializeField] private float projectileForceIncrement = 0f; // Valor que se le va sumando a la potencia del disparo del Proyectil
         private float currentForce = 0f; // Donde iremos almacenando la potencia actual acumulada
+        [HideInInspector] public bool doneShoot = false;
+        [HideInInspector] public bool doneExplotion = false;
+
+        [Header("Projectile Settings")]
+        [SerializeField] private CameraManager cameraManager = null;
 
         private void Update()
         {
@@ -29,9 +34,17 @@ namespace MSVJ1.Diego
 
             if (Input.GetKeyUp(KeyCode.Space)) // Al soltar
             {
+                doneShoot = true;
                 ProjectileBehavior projectileClone = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation); // Instanciamos el Proyectil
-                projectileClone.DoThrowGranade(transform.right, currentForce); // Le pasamos la direccion y la potencia con la que tiene que ser lanzado
+                cameraManager.MoveCamera(projectileClone.gameObject);
+                projectileClone.DoShootProjectile(transform.right, currentForce); // Le pasamos la direccion y la potencia con la que tiene que ser lanzado
+                projectileClone.OnProjectileExplotion += OnProjectileExplotionHandler;
             }
+        }
+
+        private void OnProjectileExplotionHandler()
+        {
+            doneExplotion = true;
         }
     }
 }
