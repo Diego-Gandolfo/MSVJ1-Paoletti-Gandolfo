@@ -20,6 +20,8 @@ namespace MSVJ1.Diego
         private bool canMove = false; // Si puede empezar con la sección de Movimiento
         [SerializeField] private float shootDuration = 0f; // Cuanto tiempo tienen para Disparar
         private bool canShoot = false; // Si puede empezar con la sección de Disparar
+        [SerializeField] private float explotionDuration = 0f; // Cuanto tiempo tienen para Disparar
+        private bool doneExplotion = false; // Si puede empezar con la sección de Disparar
         private int currentTurn; // De quien es el Turno Actual
         private float timer = 0f; // Para llevar el Contador de tiempo
 
@@ -91,6 +93,11 @@ namespace MSVJ1.Diego
                 shootingController.doneShoot = false; 
 
                 shootingController.enabled = false; // Desactivamos el ShootingController
+                
+                timer = explotionDuration; // Inicializamos el timer con el valor de shootDuration
+
+                textText.text = ""; // Si el timer es igual a explotionDuration ponemos el titulo en blanco
+                textNumber.text = ""; // Si el timer es igual a explotionDuration ponemos el contador en blanco
             }
             else if (canShoot && timer > 0) // Si no termino de Contar y puede Disparar
             {
@@ -98,11 +105,22 @@ namespace MSVJ1.Diego
                 DoTimer(); // Que haga la funcion del Timer
             }
 
+            if (shootingController.doneExplotion && timer <= 0)
+            {
+                doneExplotion = true;
+            }
+            else if (shootingController.doneExplotion && timer > 0)
+            {                
+                timer -= Time.deltaTime; // Restamos Time.deltaTime para hacer una cuenta regresiva
+            }
+
             // Finish Turn
             // TODO: TurnManager Finish Turn
             // Tiene que ser cuando el Proyectil exploto
-            if (!canStart && !canMove && !canShoot && shootingController.doneExplotion) // Momentaneamente, si ya termino con todas las fases
+            if (!canStart && !canMove && !canShoot && doneExplotion) // Momentaneamente, si ya termino con todas las fases
             {
+                doneExplotion = false;
+
                 currentTurn = currentTurn == 1 ? 2 : 1; // Si es el Turno del Jugador1 que ahora currentTurns sea 2 y si no es el Turno del Jugador1 entonces que ahora currentTurns sea 1
 
                 if (currentTurn == 1) AsignTurnPlayer1(player1); // Si el nuevo turno es del Jugador1, le asignamos los componentes
