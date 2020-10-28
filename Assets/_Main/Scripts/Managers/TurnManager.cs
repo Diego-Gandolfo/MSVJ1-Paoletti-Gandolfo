@@ -32,7 +32,7 @@ namespace MSVJ1.Main
         [Header("Camera Settings")]
         //[SerializeField] private CameraManager cameraManager = null;
         [SerializeField] private CinemaMachineManager cinemaManager = null;
-        [SerializeField] private Vector2 offsetCamera = Vector2.zero;
+        [SerializeField] private Vector2 offsetCamera;
 
         private void Start()
         {
@@ -138,10 +138,8 @@ namespace MSVJ1.Main
             shootingController = player1.GetComponentInChildren<ShootingController>(); // Obtenemos el ShootingController del Player 1
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             //cameraManager.MoveCamera(player1);
-            cinemaManager.MoveCamera(player1);
-            //cinemaManager.SetOffset(offsetCamera);
-            //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
-            cinemaManager.SetOffset(new Vector2(0, 3));
+            cinemaManager.SetTarget(player1);
+            cinemaManager.SetOffset(offsetCamera);
         }
 
         private void AsignTurnPlayer2(GameObject player2) // Asignamos los Componentes al Jugador2
@@ -151,16 +149,13 @@ namespace MSVJ1.Main
             characterController = player2.GetComponent<CharacterController>(); // Obtenemos el CharactgerController del Player 2
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             //cameraManager.MoveCamera(player2);
-            cinemaManager.MoveCamera(player2);
-            //cinemaManager.SetOffset(offsetCamera);
-            //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
-            cinemaManager.SetOffset(new Vector2(0, 3));
+            cinemaManager.SetTarget(player2);
+            cinemaManager.SetOffset(offsetCamera);
         }
 
         private void DoTimer() // Hacemos el Timer
         {
             timer -= Time.deltaTime; // Restamos Time.deltaTime para hacer una cuenta regresiva
-            print(Time.deltaTime);
             int intTimer = (int)timer + 1; // Acá guarado en un int el valor entero de timer y le sumo 1, para que la cuenta no termine en 0 en el Canvas
             textNumber.text = intTimer.ToString(); // Ponemos en el Canvas el valor de intTimer
         }

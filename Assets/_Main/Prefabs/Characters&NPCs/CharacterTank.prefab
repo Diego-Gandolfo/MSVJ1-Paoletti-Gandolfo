@@ -817,6 +817,10 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 405844298790273717}
   projectileForce: 1
   projectileForceIncrement: 0.25
+  doneShoot: 0
+  doneExplotion: 0
+  cinemaManager: {fileID: 0}
+  offsetCamera: {x: 0, y: 0}
 --- !u!1 &5779510006759756470
 GameObject:
   m_ObjectHideFlags: 0

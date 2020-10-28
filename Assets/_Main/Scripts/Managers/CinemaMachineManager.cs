@@ -7,7 +7,7 @@ namespace MSVJ1.Main
 {
     public class CinemaMachineManager : MonoBehaviour
     {
-        private Vector3 cameraOffset = Vector2.zero;
+        private Vector2 cameraOffset = Vector2.zero;
         private CinemachineVirtualCamera virtualCamera = null;
         private CinemachineFramingTransposer transposer = null;
 
@@ -17,7 +17,7 @@ namespace MSVJ1.Main
             transposer = virtualCamera.GetCinemachineComponent<CinemachineFramingTransposer>();
         }
 
-        public void MoveCamera(GameObject target)
+        public void SetTarget(GameObject target)
         {
             virtualCamera.Follow = target.transform;
         }
@@ -25,7 +25,7 @@ namespace MSVJ1.Main
         public void SetOffset(Vector2 offset)
         {
             cameraOffset = offset;
-
+            print(cameraOffset);
             if (virtualCamera.Follow != null)
                 transposer.m_TrackedObjectOffset = cameraOffset;
         }

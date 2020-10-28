@@ -45,8 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
-  startDuration: 5
-  movementDuration: 10
+  startDuration: 1
+  movementDuration: 1
   shootDuration: 10
+  explotionDuration: 2
   textText: {fileID: 0}
   textNumber: {fileID: 0}
+  cinemaManager: {fileID: 0}
+  offsetCamera: {x: 0, y: 3}
