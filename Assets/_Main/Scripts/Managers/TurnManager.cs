@@ -14,18 +14,25 @@ namespace MSVJ1.Main
         private ShootingController shootingController = null; // Para almacenar el ShootingController de los Players
 
         [Header("Turns Settings")]
-        [SerializeField] private float startDuration = 5f; // Cuanto debe de esperar desde que termina un turno hasta que empieza el siguiente
+        [SerializeField] private float startDuration = 0f; // Cuanto debe de esperar desde que termina un turno hasta que empieza el siguiente
         private bool canStart = true; // Si puede empezar con la sección de Start
-        [SerializeField] private float movementDuration = 10f; // Cuanto tiempo tienen para Moverse
+        [SerializeField] private float movementDuration = 0f; // Cuanto tiempo tienen para Moverse
         private bool canMove = false; // Si puede empezar con la sección de Movimiento
-        [SerializeField] private float shootDuration = 10f; // Cuanto tiempo tienen para Disparar
+        [SerializeField] private float shootDuration = 0f; // Cuanto tiempo tienen para Disparar
         private bool canShoot = false; // Si puede empezar con la sección de Disparar
+        [SerializeField] private float explotionDuration = 0f; // Cuanto tiempo tienen para Disparar
+        private bool doneExplotion = false; // Si puede empezar con la sección de Disparar
         private int currentTurn; // De quien es el Turno Actual
         private float timer = 0f; // Para llevar el Contador de tiempo
 
         [Header("Canvas Settings")]
         [SerializeField] private Text textText = null; // El Texto del Canvas que usamos para los Titulos o Mensajes
         [SerializeField] private Text textNumber = null; // El Texto del Canvas que usamos para el Contador
+
+        [Header("Camera Settings")]
+        //[SerializeField] private CameraManager cameraManager = null;
+        [SerializeField] private CinemaMachineManager cinemaManager = null;
+        [SerializeField] private Vector2 offsetCamera = Vector2.zero;
 
         private void Start()
         {
@@ -81,11 +88,18 @@ namespace MSVJ1.Main
             }
 
             // Shooting
-            if (canShoot && (Input.GetKeyUp(KeyCode.Space) || timer <= 0)) // Si termino de Contar o toco el Space, y si puede Disparar
+            if (canShoot && (shootingController.doneShoot || timer <= 0)) // Si termino de Contar o toco el Space, y si puede Disparar
             {
                 canShoot = false; // Lo ponemos en FALSE porque ya está haciendo el Disparar
 
+                shootingController.doneShoot = false;
+
                 shootingController.enabled = false; // Desactivamos el ShootingController
+
+                timer = explotionDuration; // Inicializamos el timer con el valor de shootDuration
+
+                textText.text = ""; // Si el timer es igual a explotionDuration ponemos el titulo en blanco
+                textNumber.text = ""; // Si el timer es igual a explotionDuration ponemos el contador en blanco
             }
             else if (canShoot && timer > 0) // Si no termino de Contar y puede Disparar
             {
@@ -93,11 +107,20 @@ namespace MSVJ1.Main
                 DoTimer(); // Que haga la funcion del Timer
             }
 
-            // Finish Turn
-            // TODO: TurnManager Finish Turn
-            // Tiene que ser cuando el Proyectil exploto
-            if (!canStart && !canMove && !canShoot) // Momentaneamente, si ya termino con todas las fases
+            if (shootingController.GetHasExploted() && timer <= 0)
             {
+                doneExplotion = true;
+                shootingController.SetHasExploted(false);
+            }
+            else if (shootingController.GetHasExploted() && timer > 0)
+            {
+                timer -= Time.deltaTime; // Restamos Time.deltaTime para hacer una cuenta regresiva
+            }
+
+            if (!canStart && !canMove && !canShoot && doneExplotion) // Momentaneamente, si ya termino con todas las fases
+            {
+                doneExplotion = false;
+
                 currentTurn = currentTurn == 1 ? 2 : 1; // Si es el Turno del Jugador1 que ahora currentTurns sea 2 y si no es el Turno del Jugador1 entonces que ahora currentTurns sea 1
 
                 if (currentTurn == 1) AsignTurnPlayer1(player1); // Si el nuevo turno es del Jugador1, le asignamos los componentes
@@ -114,6 +137,11 @@ namespace MSVJ1.Main
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             shootingController = player1.GetComponentInChildren<ShootingController>(); // Obtenemos el ShootingController del Player 1
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
+            //cameraManager.MoveCamera(player1);
+            cinemaManager.MoveCamera(player1);
+            //cinemaManager.SetOffset(offsetCamera);
+            //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
+            cinemaManager.SetOffset(new Vector2(0, 3));
         }
 
         private void AsignTurnPlayer2(GameObject player2) // Asignamos los Componentes al Jugador2
@@ -122,11 +150,17 @@ namespace MSVJ1.Main
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             characterController = player2.GetComponent<CharacterController>(); // Obtenemos el CharactgerController del Player 2
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
+            //cameraManager.MoveCamera(player2);
+            cinemaManager.MoveCamera(player2);
+            //cinemaManager.SetOffset(offsetCamera);
+            //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
+            cinemaManager.SetOffset(new Vector2(0, 3));
         }
 
         private void DoTimer() // Hacemos el Timer
         {
             timer -= Time.deltaTime; // Restamos Time.deltaTime para hacer una cuenta regresiva
+            print(Time.deltaTime);
             int intTimer = (int)timer + 1; // Acá guarado en un int el valor entero de timer y le sumo 1, para que la cuenta no termine en 0 en el Canvas
             textNumber.text = intTimer.ToString(); // Ponemos en el Canvas el valor de intTimer
         }

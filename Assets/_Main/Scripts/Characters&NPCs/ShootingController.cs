@@ -9,9 +9,16 @@ namespace MSVJ1.Main
         [Header("Projectile Settings")]
         [SerializeField] private ProjectileBehavior projectile = null; // Prefab del Proyectil
         [SerializeField] private Transform projectileSpawnPoint = null; // El Spawnpoint donde se Instanciara el Proyectil
-        [SerializeField] private float projectileForce = 1f; // La potencia inicial con la que sale disparado el Proyectil
-        [SerializeField] private float projectileForceIncrement = 0.25f; // Valor que se le va sumando a la potencia del disparo del Proyectil
+        [SerializeField] private float projectileForce = 0f; // La potencia inicial con la que sale disparado el Proyectil
+        [SerializeField] private float projectileForceIncrement = 0f; // Valor que se le va sumando a la potencia del disparo del Proyectil
         private float currentForce = 0f; // Donde iremos almacenando la potencia actual acumulada
+        [HideInInspector] public bool doneShoot = false;
+        [HideInInspector] public bool doneExplotion = false;
+
+        [Header("Camera Settings")]
+        //[SerializeField] private CameraManager cameraManager = null;
+        [SerializeField] private CinemaMachineManager cinemaManager = null;
+        [SerializeField] private Vector2 offsetCamera = Vector2.zero;
 
         private void Update()
         {
@@ -29,9 +36,32 @@ namespace MSVJ1.Main
 
             if (Input.GetKeyUp(KeyCode.Space)) // Al soltar
             {
+                doneShoot = true;
                 ProjectileBehavior projectileClone = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation); // Instanciamos el Proyectil
-                projectileClone.DoThrowGranade(transform.right, currentForce); // Le pasamos la direccion y la potencia con la que tiene que ser lanzado
+                //cameraManager.MoveCamera(projectileClone.gameObject);
+                cinemaManager.MoveCamera(projectileClone.gameObject);
+                //cinemaManager.SetOffset(offsetCamera);
+                //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
+                cinemaManager.SetOffset(new Vector2(0, 0));
+                projectileClone.DoShootProjectile(transform.right, currentForce); // Le pasamos la direccion y la potencia con la que tiene que ser lanzado
+                projectileClone.OnProjectileExplotion2 += OnProjectileExplotionHandler2;
+                doneExplotion = false;
             }
+        }
+
+        private void OnProjectileExplotionHandler2()
+        {
+            doneExplotion = true;
+        }
+
+        public bool GetHasExploted()
+        {
+            return doneExplotion;
+        }
+
+        public void SetHasExploted(bool value)
+        {
+            doneExplotion = value;
         }
     }
 }

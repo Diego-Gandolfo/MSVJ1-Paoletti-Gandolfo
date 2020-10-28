@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,14 @@ namespace MSVJ1.Main
 {
     public class ProjectileBehavior : MonoBehaviour
     {
-        [SerializeField] private float minVelocityMagnitude = 0.15f; // A que velocidad de Velocity va a Explotar, si Velocity está por debajo de este valor Explota
+        [SerializeField] private float minVelocityMagnitude = 0f; // A que velocidad de Velocity va a Explotar, si Velocity está por debajo de este valor Explota
         private Vector2 lastVelocity = Vector2.zero; // La ultima velocidad registrada
         [SerializeField] private GameObject exploteEffect = null; // Efecto de Particulas para la Explosion
         private bool canExplote = false; // Si puede explotar
         private Rigidbody2D rb2D = null; // Nuestro Rigidbody
-        [SerializeField] private float inertia = 2f;
+        [SerializeField] private float inertia = 0f;
+
+        public Action OnProjectileExplotion2;
 
         private void Awake()
         {
@@ -25,18 +28,19 @@ namespace MSVJ1.Main
             {
                 Instantiate(exploteEffect, transform.position, transform.rotation); // Instanciar Efecto de Particulas para la Explosion
                 // TODO: Hacer Daño de Proyectil
+                OnProjectileExplotion2.Invoke();
                 Destroy(gameObject); // Destruir este Proyectil
             }
-            
+
             lastVelocity = rb2D.velocity; // Capturamos la velocidad actual y la guardamos como la ultima velocidad registrada
         }
 
-        public void DoThrowGranade(Vector2 direction, float force) // Versión Publica del ThrowGranade
+        public void DoShootProjectile(Vector2 direction, float force) // Versión Publica del ThrowGranade
         {
-            ThrowGranade(direction, force);
+            ShootProjectile(direction, force);
         }
 
-        private void ThrowGranade(Vector2 direction, float force) // Versión Privada del ThrowGranade
+        private void ShootProjectile(Vector2 direction, float force) // Versión Privada del ThrowGranade
         {
             rb2D.AddForce(direction * force); // Agregamos la fuerza y direccion a nuestro Rigidbody
             //rb2D.velocity = Vector2.right; // Le incicamos la Velocidad

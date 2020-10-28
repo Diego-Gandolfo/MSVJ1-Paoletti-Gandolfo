@@ -30,7 +30,9 @@ namespace MSVJ1.Diego
         [SerializeField] private Text textNumber = null; // El Texto del Canvas que usamos para el Contador
 
         [Header("Camera Settings")]
-        [SerializeField] private CameraManager cameraManager = null;
+        //[SerializeField] private CameraManager cameraManager = null;
+        [SerializeField] private CinemaMachineManager cinemaManager = null;
+        [SerializeField] private Vector2 offsetCamera = Vector2.zero;
 
         private void Start()
         {
@@ -114,9 +116,6 @@ namespace MSVJ1.Diego
                 timer -= Time.deltaTime; // Restamos Time.deltaTime para hacer una cuenta regresiva
             }
 
-            // Finish Turn
-            // TODO: TurnManager Finish Turn
-            // Tiene que ser cuando el Proyectil exploto
             if (!canStart && !canMove && !canShoot && doneExplotion) // Momentaneamente, si ya termino con todas las fases
             {
                 doneExplotion = false;
@@ -137,7 +136,11 @@ namespace MSVJ1.Diego
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             shootingController = player1.GetComponentInChildren<ShootingController>(); // Obtenemos el ShootingController del Player 1
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
-            cameraManager.MoveCamera(player1);
+            //cameraManager.MoveCamera(player1);
+            cinemaManager.MoveCamera(player1);
+            //cinemaManager.SetOffset(offsetCamera);
+            //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
+            cinemaManager.SetOffset(new Vector2(0,3));
         }
 
         private void AsignTurnPlayer2(GameObject player2) // Asignamos los Componentes al Jugador2
@@ -146,7 +149,11 @@ namespace MSVJ1.Diego
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             characterController = player2.GetComponent<CharacterController>(); // Obtenemos el CharactgerController del Player 2
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
-            cameraManager.MoveCamera(player2);
+            //cameraManager.MoveCamera(player2);
+            cinemaManager.MoveCamera(player2);
+            //cinemaManager.SetOffset(offsetCamera);
+            //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
+            cinemaManager.SetOffset(new Vector2(0, 3));
         }
 
         private void DoTimer() // Hacemos el Timer
