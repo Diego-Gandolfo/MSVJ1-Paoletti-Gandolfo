@@ -47,12 +47,6 @@ public class Granada : MonoBehaviour
                 if(lifeController != null)
                 {
                     lifeController.GetDamage((damage * (Vector3.Distance(collider.transform.position, transform.position))) / explosionRadius );
-                    if (collider.gameObject.CompareTag("Player"))
-                    {
-                        print("Distance: " + Vector3.Distance(collider.transform.position, transform.position));
-                        print("Distance * Damage: " + damage * Vector3.Distance(collider.transform.position, transform.position));
-                        print("(Distance * Damage) / radio: " + (damage * (Vector3.Distance(collider.transform.position, transform.position))) / explosionRadius);
-                    }
                     //lifeController.GetDamage(damage / (Vector3.Distance ( collider.transform.position, transform.position)));
                 }
         }    

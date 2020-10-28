@@ -16,9 +16,9 @@ namespace MSVJ1.Main
         [HideInInspector] public bool doneExplotion = false;
 
         [Header("Camera Settings")]
-        //[SerializeField] private CameraManager cameraManager = null;
         [SerializeField] private CinemaMachineManager cinemaManager = null;
         [SerializeField] private Vector2 offsetCamera = Vector2.zero;
+        [SerializeField] private float projectileDistanceView = 0f;
 
         private void Update()
         {
@@ -38,11 +38,9 @@ namespace MSVJ1.Main
             {
                 doneShoot = true;
                 ProjectileBehavior projectileClone = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation); // Instanciamos el Proyectil
-                //cameraManager.MoveCamera(projectileClone.gameObject);
                 cinemaManager.SetTarget(projectileClone.gameObject);
                 cinemaManager.SetOffset(offsetCamera);
-                //cinemaManager.SetOffset(new Vector2(offsetCamera.x, offsetCamera.y));
-                //cinemaManager.SetOffset(new Vector2(0, 0));
+                cinemaManager.SetDistanceView(projectileDistanceView);
                 projectileClone.DoShootProjectile(transform.right, currentForce); // Le pasamos la direccion y la potencia con la que tiene que ser lanzado
                 projectileClone.OnProjectileExplotion2 += OnProjectileExplotionHandler2;
                 doneExplotion = false;

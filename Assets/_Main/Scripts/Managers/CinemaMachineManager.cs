@@ -7,6 +7,8 @@ namespace MSVJ1.Main
 {
     public class CinemaMachineManager : MonoBehaviour
     {
+        [SerializeField] private Transform centralPosition = null;
+        [SerializeField] private Vector2 centralPositionOffset = Vector2.zero;
         private Vector2 cameraOffset = Vector2.zero;
         private CinemachineVirtualCamera virtualCamera = null;
         private CinemachineFramingTransposer transposer = null;
@@ -25,9 +27,20 @@ namespace MSVJ1.Main
         public void SetOffset(Vector2 offset)
         {
             cameraOffset = offset;
-            print(cameraOffset);
+
             if (virtualCamera.Follow != null)
                 transposer.m_TrackedObjectOffset = cameraOffset;
+        }
+
+        public void SetDistanceView(float value)
+        {
+            virtualCamera.m_Lens.OrthographicSize = value;
+        }
+
+        public void SetCentralPosition()
+        {
+            virtualCamera.Follow = centralPosition;
+            transposer.m_TrackedObjectOffset = centralPositionOffset;
         }
     }
 }

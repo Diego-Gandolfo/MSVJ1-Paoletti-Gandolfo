@@ -821,6 +821,7 @@ MonoBehaviour:
   doneExplotion: 0
   cinemaManager: {fileID: 0}
   offsetCamera: {x: 0, y: 0}
+  projectileDistanceView: 25
 --- !u!1 &5779510006759756470
 GameObject:
   m_ObjectHideFlags: 0

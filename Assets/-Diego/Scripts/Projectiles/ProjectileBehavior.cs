@@ -27,7 +27,7 @@ namespace MSVJ1.Diego
             if (canExplote && Mathf.Abs(rb2D.velocity.magnitude) <= minVelocityMagnitude && Mathf.Abs(lastVelocity.magnitude) <= minVelocityMagnitude) // Si puede explotar y la magnitud absoluta de velocidad actual y de la ultima velocidad es menor o igual a la velocidad minima
             {
                 Instantiate(exploteEffect, transform.position, transform.rotation); // Instanciar Efecto de Particulas para la Explosion
-                // TODO: Hacer Daño de Proyectil
+                // Daño de Proyectil
                 OnProjectileExplotion.Invoke();
                 Destroy(gameObject); // Destruir este Proyectil
             }

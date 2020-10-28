@@ -53,3 +53,5 @@ MonoBehaviour:
   textNumber: {fileID: 0}
   cinemaManager: {fileID: 0}
   offsetCamera: {x: 0, y: 3}
+  sceneDistanceView: 50
+  playerDistanceView: 10

@@ -30,13 +30,17 @@ namespace MSVJ1.Main
         [SerializeField] private Text textNumber = null; // El Texto del Canvas que usamos para el Contador
 
         [Header("Camera Settings")]
-        //[SerializeField] private CameraManager cameraManager = null;
         [SerializeField] private CinemaMachineManager cinemaManager = null;
-        [SerializeField] private Vector2 offsetCamera;
+        [SerializeField] private Vector2 offsetCamera = Vector2.zero;
+        [SerializeField] private float sceneDistanceView = 0f;
+        [SerializeField] private float playerDistanceView = 0f;
+
+        // cinemaManager.SetCloseView();
+        // cinemaManager.SetFarView();
 
         private void Start()
         {
-            currentTurn = Random.Range(1, 3); // Asignamos de forma aleatoria el Turno
+            currentTurn = Random.Range(1, 3); // Asignamos de forma aleatoria el 1er Turno
 
             if (currentTurn == 1) // Si es el Turno del Jugador1
             {
@@ -63,6 +67,9 @@ namespace MSVJ1.Main
 
                 timer = movementDuration; // Inicializamos el timer con el valor de movementDuration
                 canMove = true; // Indicamos que puede empezar con el Movimiento
+                cinemaManager.SetDistanceView(playerDistanceView);
+                cinemaManager.SetTarget(characterController.gameObject);
+                cinemaManager.SetOffset(offsetCamera);
             }
             else if (canStart && timer > 0) // Si no termino de Contar y puede hacer el Start
             {
@@ -137,9 +144,8 @@ namespace MSVJ1.Main
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             shootingController = player1.GetComponentInChildren<ShootingController>(); // Obtenemos el ShootingController del Player 1
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
-            //cameraManager.MoveCamera(player1);
-            cinemaManager.SetTarget(player1);
-            cinemaManager.SetOffset(offsetCamera);
+            cinemaManager.SetDistanceView(sceneDistanceView);
+            cinemaManager.SetCentralPosition();
         }
 
         private void AsignTurnPlayer2(GameObject player2) // Asignamos los Componentes al Jugador2
@@ -148,9 +154,8 @@ namespace MSVJ1.Main
             shootingController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
             characterController = player2.GetComponent<CharacterController>(); // Obtenemos el CharactgerController del Player 2
             characterController.enabled = false; // Lo ponemos en falso, para controlar nosotros cuando se prende
-            //cameraManager.MoveCamera(player2);
-            cinemaManager.SetTarget(player2);
-            cinemaManager.SetOffset(offsetCamera);
+            cinemaManager.SetDistanceView(sceneDistanceView);
+            cinemaManager.SetCentralPosition();
         }
 
         private void DoTimer() // Hacemos el Timer
