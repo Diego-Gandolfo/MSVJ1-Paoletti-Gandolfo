@@ -84,10 +84,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd9d297d24d03f24fb06a9c3ecdefdef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minVelocityMagnitude: 0.15
+  minVelocityMagnitude: 0.05
   exploteEffect: {fileID: 5828645605230735396, guid: cbe33342fe328244fa152d23091342e5,
     type: 3}
-  inertia: 2
+  inertia: 1.25
 --- !u!114 &4306711083233911040
 MonoBehaviour:
   m_ObjectHideFlags: 0

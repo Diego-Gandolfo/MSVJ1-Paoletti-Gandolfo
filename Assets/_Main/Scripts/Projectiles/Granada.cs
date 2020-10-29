@@ -20,7 +20,7 @@ namespace MSVJ1.Main
             projectileBehavior = GetComponent<ProjectileBehavior>();
             projectileBehavior.OnProjectileExplotion2 += Explosion;
         }
-        
+        /*
         void Update() // Comento el Update porque el tiempo se hace en el otro Script
         {
             currentExplosionTime += Time.deltaTime;
@@ -30,7 +30,7 @@ namespace MSVJ1.Main
                 Explosion();
             }
         }
-        
+        */
         private void Explosion()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)transform.position, explosionRadius, layerMask);

@@ -73,7 +73,7 @@ namespace MSVJ1.Main
             }
             else if (canStart && timer > 0) // Si no termino de Contar y puede hacer el Start
             {
-                if (timer == startDuration) textText.text = "Turno de Jugador" + currentTurn + " comienza en"; // Si el timer es igual a startDuration escribimos el titulo, para que solo se haga una vez
+                textText.text = currentTurn == 1 ? "Turno de <b><color=red><size=32>Jugador1</size></color></b> comienza en" : "Turno de <b><color=blue><size=32>Jugador2</size></color></b> comienza en";
                 DoTimer(); // Que haga la funcion del Timer
             }
 
@@ -90,7 +90,7 @@ namespace MSVJ1.Main
             }
             else if (canMove && timer > 0) // Si no termino de Contar y puede hacer el Movimiento
             {
-                if (timer == movementDuration) textText.text = "Jugador" + currentTurn + " puede moverse!"; // Si el timer es igual a movementDuration escribimos el titulo, para que solo se haga una vez
+                textText.text = currentTurn == 1 ? "<b><color=red><size=32>Jugador1</size></color></b> puede moverse!" : "<b><color=blue><size=32>Jugador2</size></color></b> puede moverse!";
                 DoTimer(); // Que haga la funcion del Timer
             }
 
@@ -117,7 +117,7 @@ namespace MSVJ1.Main
             }
             else if (canShoot && timer > 0) // Si no termino de Contar y puede Disparar
             {
-                if (timer == shootDuration) textText.text = "Jugador" + currentTurn + " puede DISPARAR!"; // Si el timer es igual a shootDuration escribimos el titulo, para que solo se haga una vez
+                textText.text = currentTurn == 1 ? "<b><color=red><size=32>Jugador1</size></color></b> puede DISPARAR!" : "<b><color=blue><size=32>Jugador2</size></color></b> puede DISPARAR!";
                 DoTimer(); // Que haga la funcion del Timer
             }
 

@@ -27,9 +27,8 @@ namespace MSVJ1.Main
             if (canExplote && Mathf.Abs(rb2D.velocity.magnitude) <= minVelocityMagnitude && Mathf.Abs(lastVelocity.magnitude) <= minVelocityMagnitude) // Si puede explotar y la magnitud absoluta de velocidad actual y de la ultima velocidad es menor o igual a la velocidad minima
             {
                 Instantiate(exploteEffect, transform.position, transform.rotation); // Instanciar Efecto de Particulas para la Explosion
-                // TODO: Hacer Daño de Proyectil
                 OnProjectileExplotion2.Invoke();
-                Destroy(gameObject); // Destruir este Proyectil
+                //Destroy(gameObject);
             }
 
             lastVelocity = rb2D.velocity; // Capturamos la velocidad actual y la guardamos como la ultima velocidad registrada
@@ -54,6 +53,11 @@ namespace MSVJ1.Main
             var direction = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal); // Calculamos la nueva dirección
 
             rb2D.velocity = direction * speed; // Hacemos que la velocity sea igual a la nueva dirección * speed
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            rb2D.velocity /= inertia;
         }
     }
 }
