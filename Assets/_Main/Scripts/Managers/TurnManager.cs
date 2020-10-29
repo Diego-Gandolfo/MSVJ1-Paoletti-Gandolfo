@@ -99,11 +99,18 @@ namespace MSVJ1.Main
             {
                 canShoot = false; // Lo ponemos en FALSE porque ya está haciendo el Disparar
 
-                shootingController.doneShoot = false;
-
                 shootingController.enabled = false; // Desactivamos el ShootingController
 
-                timer = explotionDuration; // Inicializamos el timer con el valor de shootDuration
+                if (shootingController.doneShoot)
+                {
+                    shootingController.doneShoot = false;
+
+                    timer = explotionDuration; // Inicializamos el timer con el valor de shootDuration
+                }
+                else
+                {
+                    doneExplotion = true;
+                }
 
                 textText.text = ""; // Si el timer es igual a explotionDuration ponemos el titulo en blanco
                 textNumber.text = ""; // Si el timer es igual a explotionDuration ponemos el contador en blanco

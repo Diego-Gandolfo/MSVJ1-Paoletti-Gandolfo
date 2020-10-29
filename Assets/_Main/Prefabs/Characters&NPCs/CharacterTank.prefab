@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1043839475}
   - component: {fileID: 1043839473}
   - component: {fileID: 1491986538631634726}
+  - component: {fileID: 3201486529307477171}
   m_Layer: 8
   m_Name: CharacterTank
   m_TagString: Player
@@ -101,6 +102,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 3
+--- !u!114 &3201486529307477171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5779510005149460851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b66c2699932934094c5cf927834b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 100
+  currentLife: 0
 --- !u!1 &5779510005152975810
 GameObject:
   m_ObjectHideFlags: 0
