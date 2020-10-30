@@ -6,13 +6,13 @@ namespace MSVJ1.Main
 {
     public class Granada : MonoBehaviour
     {
-        [SerializeField] private float damage;
-        [SerializeField] private float explosionTime; // Hay que asegurarse de que el tiempo sea solo por si la bala pasa demasiado rebotando o cayendo
-        [SerializeField] private float explosionRadius;
-        [SerializeField] private float explosionIntensity;
-        [SerializeField] private LayerMask layerMask;
+        [SerializeField] private float damage = 0f;
+        //[SerializeField] private float explosionTime;
+        [SerializeField] private float explosionRadius = 0f;
+        [SerializeField] private float explosionIntensity = 0f;
+        [SerializeField] private LayerMask layerMask = 0;
     
-        private float currentExplosionTime;
+        //private float currentExplosionTime;
         private ProjectileBehavior projectileBehavior = null;
 
         private void Awake()
@@ -20,7 +20,7 @@ namespace MSVJ1.Main
             projectileBehavior = GetComponent<ProjectileBehavior>();
             projectileBehavior.OnProjectileExplotion2 += Explosion;
         }
-        /*
+        /* Me lo lleve al otro Script, que ahi se hace toda la lógica de si tiene que explotar o no
         void Update() // Comento el Update porque el tiempo se hace en el otro Script
         {
             currentExplosionTime += Time.deltaTime;

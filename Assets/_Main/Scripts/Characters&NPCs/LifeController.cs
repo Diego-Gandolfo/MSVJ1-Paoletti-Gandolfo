@@ -10,6 +10,7 @@ namespace MSVJ1.Main
         [SerializeField] private float maxLife = 100;
         [SerializeField] private float currentLife;
 
+        public Action OnGetDamage;
         public Action OnDie;
 
         private void Awake()
@@ -24,6 +25,8 @@ namespace MSVJ1.Main
 
         public void GetDamage(float damage)
         {
+            OnGetDamage?.Invoke();
+
             currentLife -= damage;
 
             if (currentLife <= 0)
@@ -31,7 +34,7 @@ namespace MSVJ1.Main
                 Invoke("Kill", 0);
             }
         }
-        
+        /*
         public void GetHeal (float heal)
         {
             if (currentLife < maxLife)
@@ -44,7 +47,7 @@ namespace MSVJ1.Main
                 }
             }
         }
-
+        */
         private void Kill()
         {
             OnDie?.Invoke();
@@ -56,7 +59,7 @@ namespace MSVJ1.Main
             return currentLife;
         }
 
-        public float GetLifePorcentual()
+        public float GetLifePorcentage()
         {
             return (currentLife / maxLife);
         }
