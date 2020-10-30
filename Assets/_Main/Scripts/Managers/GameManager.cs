@@ -11,13 +11,20 @@ namespace MSVJ1.Main
 
         private void Awake()
         {
-            lifeControllerPlayer1.OnDie += OnDieHandler;
-            lifeControllerPlayer2.OnDie += OnDieHandler;
+            lifeControllerPlayer1.OnDie += OnPlayer1DieHandler;
+            lifeControllerPlayer2.OnDie += OnPlayer2DieHandler;
         }
 
-        private void OnDieHandler()
+        // TODO: Fin de Partida
+
+        private void OnPlayer1DieHandler()
         {
-            // TODO: Fin de Partida
+            print("Gano el Jugador 2");
+        }
+        
+        private void OnPlayer2DieHandler()
+        {
+            print("Gano el Jugador 1");
         }
     }
 }

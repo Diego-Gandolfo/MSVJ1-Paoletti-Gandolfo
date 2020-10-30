@@ -35,9 +35,6 @@ namespace MSVJ1.Main
         [SerializeField] private float sceneDistanceView = 0f;
         [SerializeField] private float playerDistanceView = 0f;
 
-        // cinemaManager.SetCloseView();
-        // cinemaManager.SetFarView();
-
         private void Start()
         {
             currentTurn = Random.Range(1, 3); // Asignamos de forma aleatoria el 1er Turno
