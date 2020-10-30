@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 namespace MSVJ1.Main
 {
@@ -19,6 +20,11 @@ namespace MSVJ1.Main
         [SerializeField] private CinemaMachineManager cinemaManager = null;
         [SerializeField] private Vector2 offsetCamera = Vector2.zero;
         [SerializeField] private float projectileDistanceView = 0f;
+
+        private void Awake()
+        {
+            if (cinemaManager == null) Debug.LogError($"{gameObject.transform.parent.transform.parent.name}.{gameObject.transform.parent.name}.{gameObject.name} no tiene CinemaMachineManager<CM vcam1> asignado en ShootingController");
+        }
 
         private void Update()
         {
