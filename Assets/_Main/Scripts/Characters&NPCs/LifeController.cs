@@ -25,14 +25,14 @@ namespace MSVJ1.Main
 
         public void GetDamage(float damage)
         {
-            OnGetDamage?.Invoke();
-
             currentLife -= damage;
 
             if (currentLife <= 0)
             {
                 Invoke("Kill", 0);
             }
+
+            OnGetDamage?.Invoke();
         }
         /*
         public void GetHeal (float heal)
@@ -51,7 +51,7 @@ namespace MSVJ1.Main
         private void Kill()
         {
             OnDie?.Invoke();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         public float GetCurrentLife()

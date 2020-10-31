@@ -356,7 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minVelocityMagnitude: 0.05
   explosionTime: 30
-  exploteEffect: {fileID: 5828645605230735396, guid: cbe33342fe328244fa152d23091342e5,
+  exploteEffect: {fileID: 5828645605230735396, guid: 3247924f0258e1048a0fe00b19d042d2,
     type: 3}
   inertia: 1.25
   canvas: {fileID: 5273046433315234624}
@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7679a0b93518ae7428f1508ba0092602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 50
+  damage: 100
   explosionRadius: 10
   explosionIntensity: 5
   layerMask:

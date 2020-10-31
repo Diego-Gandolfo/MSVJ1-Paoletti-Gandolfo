@@ -1,13 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace MSVJ1.Main
 {
     public class GameManager : MonoBehaviour
     {
+        [Header("Players")]
         [SerializeField] private LifeController lifeControllerPlayer1 = null;
         [SerializeField] private LifeController lifeControllerPlayer2 = null;
+
+        [Header("Canvas Player Win")]
+        [SerializeField] private GameObject canvasPlayer1Win = null;
+        [SerializeField] private GameObject canvasPlayer2Win = null;
+
+        [Header("Canvas Player Win")]
+        [SerializeField] private GameObject canvasMenu = null;
 
         private void Awake()
         {
@@ -15,16 +24,23 @@ namespace MSVJ1.Main
             lifeControllerPlayer2.OnDie += OnPlayer2DieHandler;
         }
 
-        // TODO: Fin de Partida
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Time.timeScale = 0;
+                canvasMenu.SetActive(true);
+            }
+        }
 
         private void OnPlayer1DieHandler()
         {
-            print("Gano el Jugador 2");
+            canvasPlayer2Win.SetActive(true);
         }
         
         private void OnPlayer2DieHandler()
         {
-            print("Gano el Jugador 1");
+            canvasPlayer1Win.SetActive(true);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace MSVJ1.Main
         private void Explosion()
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll((Vector2)transform.position, explosionRadius, layerMask);
-
+            
             foreach (var collider in colliders)
             {
                 Rigidbody2D rigidbody = collider.gameObject.GetComponent<Rigidbody2D>();
@@ -44,6 +44,7 @@ namespace MSVJ1.Main
                     Vector3 direction = collider.transform.position - transform.position;
                     float distance = direction.magnitude;
                     direction.Normalize();
+
                     //Mientras mas lejos estan de la explosion, menos  impulso reciben...
                     rigidbody.AddForce((direction * explosionIntensity) / distance, ForceMode2D.Impulse);
                 }
@@ -53,9 +54,13 @@ namespace MSVJ1.Main
                 if(lifeController != null)
                 {
                     float distance = Vector3.Distance(collider.transform.position, transform.position);
-                    lifeController.GetDamage(Mathf.Abs(explosionRadius - distance) * (damage / explosionRadius));
+
+                    if ((explosionRadius - distance) > 0)
+                        lifeController.GetDamage((explosionRadius - distance) * (damage / explosionRadius));
                     //lifeController.GetDamage((damage * (Vector3.Distance(collider.transform.position, transform.position))) / explosionRadius );
                     //lifeController.GetDamage(damage / (Vector3.Distance ( collider.transform.position, transform.position)));
+
+                    print(collider.name);
                 }
             }    
 
