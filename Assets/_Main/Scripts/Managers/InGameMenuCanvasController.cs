@@ -8,6 +8,9 @@ namespace MSVJ1.Main
 {
     public class InGameMenuCanvasController : MonoBehaviour
     {
+        [Header("SoundManager")]
+        [SerializeField] private SoundManager soundManager = null;
+
         [Header("Buttons")]
         [SerializeField] private Button buttonMainMenu = null;
         [SerializeField] private Button buttonBack = null;
@@ -29,12 +32,14 @@ namespace MSVJ1.Main
 
         private void OnClickMainMenuHandler()
         {
+            soundManager.PlaySound("click");
             Time.timeScale = 1;
             SceneManager.LoadScene(sceneMainMenu);
         }
 
         private void OnClickBackHandler()
         {
+            soundManager.PlaySound("click");
             Time.timeScale = 1;
             gameObject.SetActive(false);
         }

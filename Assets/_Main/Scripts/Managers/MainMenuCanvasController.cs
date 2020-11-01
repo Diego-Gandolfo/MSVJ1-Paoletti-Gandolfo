@@ -8,6 +8,9 @@ namespace MSVJ1.Main
 {
     public class MainMenuCanvasController : MonoBehaviour
     {
+        [Header("SoundManager")]
+        [SerializeField] private SoundManager soundManager = null;
+
         [Header("Buttons")]
         [SerializeField] private Button buttonExit = null;
         [SerializeField] private Button buttonPlay = null;
@@ -23,11 +26,13 @@ namespace MSVJ1.Main
 
         private void OnClickExitHandler()
         {
+            soundManager.PlaySound("click");
             Application.Quit();
         }
 
         private void OnClickPlayHandler()
         {
+            soundManager.PlaySound("click");
             SceneManager.LoadScene(scenePlay);
         }
     }

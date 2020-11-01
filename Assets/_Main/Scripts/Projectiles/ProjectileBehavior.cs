@@ -32,6 +32,7 @@ namespace MSVJ1.Main
         [SerializeField] private Canvas canvas;
         [SerializeField] private TextMeshProUGUI text;
 
+
         public Action OnProjectileExplotion2;
 
         private void Awake()

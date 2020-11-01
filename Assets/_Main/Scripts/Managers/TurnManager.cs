@@ -35,6 +35,9 @@ namespace MSVJ1.Main
         [SerializeField] private float sceneDistanceView = 0f;
         [SerializeField] private float playerDistanceView = 0f;
 
+        [Header("SoundManager")]
+        [SerializeField] private SoundManager soundManager = null;
+
         private void Start()
         {
             currentTurn = Random.Range(1, 3); // Asignamos de forma aleatoria el 1er Turno
@@ -100,6 +103,8 @@ namespace MSVJ1.Main
 
                 if (shootingController.doneShoot)
                 {
+                    soundManager.PlaySound("shoot");
+
                     shootingController.doneShoot = false;
 
                     timer = explotionDuration; // Inicializamos el timer con el valor de shootDuration
@@ -125,6 +130,8 @@ namespace MSVJ1.Main
             }
             else if (shootingController.GetHasExploted() && timer > 0)
             {
+                if (timer == explotionDuration) soundManager.PlaySound("explotion");
+                
                 timer -= Time.deltaTime; // Restamos Time.deltaTime para hacer una cuenta regresiva
             }
 

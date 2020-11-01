@@ -18,6 +18,9 @@ namespace MSVJ1.Main
         [Header("Canvas Player Win")]
         [SerializeField] private GameObject canvasMenu = null;
 
+        [Header("SoundManager")]
+        [SerializeField] private SoundManager soundManager = null;
+
         private void Awake()
         {
             lifeControllerPlayer1.OnDie += OnPlayer1DieHandler;
@@ -35,11 +38,15 @@ namespace MSVJ1.Main
 
         private void OnPlayer1DieHandler()
         {
+            Time.timeScale = 0;
+            soundManager.PlaySound("win");
             canvasPlayer2Win.SetActive(true);
         }
         
         private void OnPlayer2DieHandler()
         {
+            Time.timeScale = 0;
+            soundManager.PlaySound("win");
             canvasPlayer1Win.SetActive(true);
         }
     }
