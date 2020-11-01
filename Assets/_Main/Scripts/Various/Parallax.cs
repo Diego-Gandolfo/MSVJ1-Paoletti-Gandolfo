@@ -6,12 +6,13 @@ namespace MSVJ1.Main
 {
     public class Parallax : MonoBehaviour
     {
-        [SerializeField, Range(0f,1f)] private float parallaxEffectMultiplier;
+        [SerializeField, Range(0f,1f)] private float parallaxEffectMultiplier = 0f;
+        [SerializeField] private int numberOfCopys = 0;
 
-        private Transform cameraTransform;
-        private Vector3 lastCameraPosition;
-        private float width;
-        private SpriteRenderer spriteRenderer;
+        private Transform cameraTransform = null;
+        private Vector3 lastCameraPosition = Vector3.zero;
+        private float width = 0f;
+        private SpriteRenderer spriteRenderer = null;
 
         private void Start()
         {
@@ -21,7 +22,7 @@ namespace MSVJ1.Main
             width = spriteRenderer.bounds.size.x;
         }
 
-        private void Update()
+        private void FixedUpdate() // Lo cambie al FixedUpdate porque en el Update glitcheaba
         {
             Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
             transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier,0f,0f);
@@ -31,7 +32,7 @@ namespace MSVJ1.Main
 
             if(Mathf.Abs(distanceWithCamera) > width) // Le saqué el igual, a ver si con esto se arregla
             {
-                float movement = distanceWithCamera > 0 ? width * 2f : width * -2f;
+                float movement = distanceWithCamera > 0 ? width * numberOfCopys : width * -numberOfCopys;
                
                 transform.position += new Vector3 (movement,0f,0f);
             }
