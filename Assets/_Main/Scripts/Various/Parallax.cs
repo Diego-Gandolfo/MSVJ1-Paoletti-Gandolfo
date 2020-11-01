@@ -29,7 +29,7 @@ namespace MSVJ1.Main
 
             float distanceWithCamera = cameraTransform.position.x - transform.position.x;
 
-            if(Mathf.Abs(distanceWithCamera) >= width)
+            if(Mathf.Abs(distanceWithCamera) > width) // Le saqué el igual, a ver si con esto se arregla
             {
                 float movement = distanceWithCamera > 0 ? width * 2f : width * -2f;
                
