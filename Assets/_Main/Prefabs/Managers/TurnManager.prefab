@@ -55,3 +55,4 @@ MonoBehaviour:
   offsetCamera: {x: 0, y: 3}
   sceneDistanceView: 50
   playerDistanceView: 10
+  soundManager: {fileID: 0}
