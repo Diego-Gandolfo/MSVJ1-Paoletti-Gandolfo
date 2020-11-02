@@ -288,6 +288,11 @@ PrefabInstance:
       propertyPath: cinemaManager
       value: 
       objectReference: {fileID: 1757832263}
+    - target: {fileID: 1491986538631634726, guid: 3c999a80d4d6c744fa419d4757c130f1,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1614618752}
     - target: {fileID: 5779510005149460848, guid: 3c999a80d4d6c744fa419d4757c130f1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1970,6 +1975,11 @@ PrefabInstance:
       propertyPath: cinemaManager
       value: 
       objectReference: {fileID: 1757832263}
+    - target: {fileID: 1491986538631634726, guid: a4d283ae2b660b54eb2840e9f6eb495e,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1614618752}
     - target: {fileID: 5779510005149460848, guid: a4d283ae2b660b54eb2840e9f6eb495e,
         type: 3}
       propertyPath: m_LocalPosition.x

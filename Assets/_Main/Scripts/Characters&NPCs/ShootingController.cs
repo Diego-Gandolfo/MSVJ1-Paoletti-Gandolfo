@@ -10,6 +10,7 @@ namespace MSVJ1.Main
         [Header("Projectile Settings")]
         [SerializeField] private ProjectileBehavior projectile = null; // Prefab del Proyectil
         [SerializeField] private Transform projectileSpawnPoint = null; // El Spawnpoint donde se Instanciara el Proyectil
+        [SerializeField] private LineRenderer lineRenderer = null;
         [SerializeField] private float projectileForce = 0f; // La potencia inicial con la que sale disparado el Proyectil
         [SerializeField] private float projectileForceIncrement = 0f; // Valor que se le va sumando a la potencia del disparo del Proyectil
         private float currentForce = 0f; // Donde iremos almacenando la potencia actual acumulada
@@ -35,13 +36,20 @@ namespace MSVJ1.Main
             transform.right = direction; // Actualizamos el Transform para que mire al puntero del Mouse
 
             if (Input.GetKeyDown(KeyCode.Space)) // Al presionar
+            {
                 currentForce = projectileForce; // Inicializamos currentForce
+                lineRenderer.SetPosition(1, new Vector3(currentForce / 5, 0, 0));
+            }
 
             if (Input.GetKey(KeyCode.Space)) // Al mantener presionado
+            {
                 currentForce += projectileForceIncrement; // Incrementamos la currentForce
+                lineRenderer.SetPosition(1, new Vector3(currentForce / 5, 0, 0));
+            }
 
             if (Input.GetKeyUp(KeyCode.Space)) // Al soltar
             {
+                lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
                 doneShoot = true;
                 ProjectileBehavior projectileClone = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation); // Instanciamos el Proyectil
                 cinemaManager.SetTarget(projectileClone.gameObject);

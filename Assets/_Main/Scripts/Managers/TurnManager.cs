@@ -85,6 +85,8 @@ namespace MSVJ1.Main
                 characterController.enabled = false; // Desactivamos el CharacterController
                 shootingController.enabled = true; // Activamos el ShootingController
 
+                soundManager.PlaySound("playerStop");
+
                 timer = shootDuration; // Inicializamos el timer con el valor de shootDuration
                 canShoot = true; // Indicamos que puede empezar con el Disparar
             }
