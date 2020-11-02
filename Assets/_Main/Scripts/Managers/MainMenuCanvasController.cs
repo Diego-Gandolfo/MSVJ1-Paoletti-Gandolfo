@@ -14,6 +14,12 @@ namespace MSVJ1.Main
         [Header("Buttons")]
         [SerializeField] private Button buttonExit = null;
         [SerializeField] private Button buttonPlay = null;
+        [SerializeField] private Button buttonHowToPlay = null;
+        [SerializeField] private Button buttonBack = null;
+
+        [Header("Menus")]
+        [SerializeField] private GameObject mainMenu = null;
+        [SerializeField] private GameObject howToPlay = null;
 
         [Header("Scenes")]
         [SerializeField] private string scenePlay = null;
@@ -22,6 +28,10 @@ namespace MSVJ1.Main
         {
             buttonExit.onClick.AddListener(OnClickExitHandler);
             buttonPlay.onClick.AddListener(OnClickPlayHandler);
+            buttonHowToPlay.onClick.AddListener(OnClickHowToPlayHandler);
+            buttonBack.onClick.AddListener(OnClickBackHandler);
+            howToPlay.SetActive(false);
+            mainMenu.SetActive(true);
         }
 
         private void OnClickExitHandler()
@@ -34,6 +44,20 @@ namespace MSVJ1.Main
         {
             soundManager.PlaySound("click");
             SceneManager.LoadScene(scenePlay);
+        }
+
+        private void OnClickHowToPlayHandler()
+        {
+            soundManager.PlaySound("click");
+            mainMenu.SetActive(false);
+            howToPlay.SetActive(true);
+        }
+
+        private void OnClickBackHandler()
+        {
+            soundManager.PlaySound("click");
+            howToPlay.SetActive(false);
+            mainMenu.SetActive(true);
         }
     }
 }

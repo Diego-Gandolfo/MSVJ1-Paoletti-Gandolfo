@@ -78,7 +78,7 @@ namespace MSVJ1.Main
             }
 
             // Movement
-            if (canMove && timer <= 0) // Si termino de Contar y puede hacer el Movimiento
+            if (canMove && (timer <= 0 || Input.GetKeyUp(KeyCode.Space))) // Si termino de Contar y puede hacer el Movimiento
             {
                 canMove = false; // Lo ponemos en FALSE porque ya está haciendo el Movimiento
 
