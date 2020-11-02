@@ -288,6 +288,11 @@ PrefabInstance:
       propertyPath: cinemaManager
       value: 
       objectReference: {fileID: 1757832263}
+    - target: {fileID: 1267883294196214772, guid: 3c999a80d4d6c744fa419d4757c130f1,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1614618752}
     - target: {fileID: 1491986538631634726, guid: 3c999a80d4d6c744fa419d4757c130f1,
         type: 3}
       propertyPath: soundManager
@@ -1975,6 +1980,11 @@ PrefabInstance:
       propertyPath: cinemaManager
       value: 
       objectReference: {fileID: 1757832263}
+    - target: {fileID: 1267883294196214772, guid: a4d283ae2b660b54eb2840e9f6eb495e,
+        type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1614618752}
     - target: {fileID: 1491986538631634726, guid: a4d283ae2b660b54eb2840e9f6eb495e,
         type: 3}
       propertyPath: soundManager
@@ -8445,6 +8455,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5752083471374636128, guid: 19c4bc091ca9b5b4193aaa458e377b56,
+        type: 3}
+      propertyPath: proyectileReflect
+      value: 
+      objectReference: {fileID: 8300000, guid: 6c7e0cbd06096aa4bbacc9c17ae51d1f, type: 3}
     - target: {fileID: 5752083471374636129, guid: 19c4bc091ca9b5b4193aaa458e377b56,
         type: 3}
       propertyPath: m_LocalPosition.x

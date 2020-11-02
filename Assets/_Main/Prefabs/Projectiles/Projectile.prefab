@@ -358,6 +358,8 @@ MonoBehaviour:
   explosionTime: 30
   exploteEffect: {fileID: 5828645605230735396, guid: 3247924f0258e1048a0fe00b19d042d2,
     type: 3}
+  projectileReflectEffect: {fileID: 7743295194000227307, guid: 9dbcfc00f4e1a1340aed5a49e0a61ae8,
+    type: 3}
   inertia: 1.25
   canvas: {fileID: 5273046433315234624}
   text: {fileID: 3351031757549669277}

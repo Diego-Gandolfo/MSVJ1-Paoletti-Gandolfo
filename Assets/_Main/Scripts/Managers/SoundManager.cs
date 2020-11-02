@@ -14,6 +14,7 @@ namespace MSVJ1.Main
         [SerializeField] private AudioClip win = null;
         [SerializeField] private AudioClip click = null;
         [SerializeField] private AudioClip playerMove = null;
+        [SerializeField] private AudioClip proyectileReflect = null;
 
         private void Awake()
         {
@@ -49,6 +50,10 @@ namespace MSVJ1.Main
                     audioSource.Stop();
                     audioSource.clip = null;
                     audioSource.loop = false;
+                    break;
+
+                case "proyectileReflect":
+                    audioSource.PlayOneShot(proyectileReflect);
                     break;
             }
         }

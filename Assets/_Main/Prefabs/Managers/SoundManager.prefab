@@ -49,6 +49,7 @@ MonoBehaviour:
   win: {fileID: 8300000, guid: f4d1770654b88204780c0e15a4a01d08, type: 3}
   click: {fileID: 8300000, guid: ff879e8feea65df4cb447b733336b5de, type: 3}
   playerMove: {fileID: 8300000, guid: 8a2511131d7740646b3d38bbf0af89e1, type: 3}
+  proyectileReflect: {fileID: 8300000, guid: 6319cfe5697f2bf4b92355c32ae63440, type: 3}
 --- !u!82 &5752083471374636191
 AudioSource:
   m_ObjectHideFlags: 0

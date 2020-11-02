@@ -22,6 +22,7 @@ namespace MSVJ1.Main
         
         [Header("Particle Effect")]
         [SerializeField] private GameObject exploteEffect = null; // Efecto de Particulas para la Explosion
+        [SerializeField] private GameObject projectileReflectEffect = null;
 
         [Header("Physics")]
         [SerializeField] private float inertia = 0f;
@@ -34,6 +35,7 @@ namespace MSVJ1.Main
 
 
         public Action OnProjectileExplotion2;
+        public Action OnProjectileReflect;
 
         private void Awake()
         {
@@ -86,11 +88,15 @@ namespace MSVJ1.Main
             var direction = Vector2.Reflect(lastVelocity.normalized, collision.contacts[0].normal); // Calculamos la nueva dirección
 
             rb2D.velocity = direction * speed; // Hacemos que la velocity sea igual a la nueva dirección * speed
+
+            //Instantiate(projectileReflectEffect, transform.position, Quaternion.identity); // No me gusto como quedo el Efecto
+
+            //OnProjectileReflect?.Invoke(); // No me gusto como quedo el sonido
         }
 
         private void OnCollisionStay2D(Collision2D collision)
         {
-            rb2D.velocity /= inertia;
+            rb2D.velocity = new Vector2(rb2D.velocity.x / inertia, rb2D.velocity.y);
         }
     }
 }

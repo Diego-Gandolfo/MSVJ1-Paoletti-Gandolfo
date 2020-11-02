@@ -59,8 +59,9 @@ namespace MSVJ1.Main
         private void LateUpdate() // Lo hacemos en un LateUpdate para asegurarnos que esto sea lo ultimo que ocurre en los Updates
         {
             // Start Turn
-            if (canStart && timer <= 0) // Si termino de Contar y puede hacer el Start
+            if (canStart && (timer <= 0 || Input.GetKeyUp(KeyCode.Space))) // Si termino de Contar y puede hacer el Start
             {
+                Input.ResetInputAxes();
                 canStart = false; // Lo ponemos en FALSE porque ya está haciendo el Start
 
                 characterController.enabled = true; // Activamos el CharacterController

@@ -669,6 +669,8 @@ MonoBehaviour:
     type: 3}
   projectileSpawnPoint: {fileID: 405844298790273717}
   lineRenderer: {fileID: 2827267564966807185}
+  shootEffect: {fileID: 2307957569655483785, guid: 65b01d8122544d74d9c312f73d6536fb,
+    type: 3}
   projectileForce: 1
   projectileForceIncrement: 0.1
   doneShoot: 0
