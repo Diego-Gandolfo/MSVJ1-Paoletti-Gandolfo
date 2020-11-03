@@ -41,8 +41,21 @@ namespace MSVJ1.Main
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Almacenamos las coordenadas de donde se encuentra el puntero del Mouse
 
             Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y); // Calculamos la dirección a la que hay que mirar
-            print(direction.normalized);
+            
             transform.right = direction; // Actualizamos el Transform para que mire al puntero del Mouse
+            
+            /*
+            if (direction.normalized.y > ((transform.parent.transform.parent.rotation.normalized.z * 2) - 0f))
+                transform.right = direction; // Actualizamos el Transform para que mire al puntero del Mouse
+            if (direction.normalized.y > ((transform.parent.transform.parent.rotation.normalized.z * -2) - 0f))
+                transform.right = direction; // Actualizamos el Transform para que mire al puntero del Mouse
+            */
+            /*
+            if (direction.normalized.y > 0f && transform.parent.transform.parent.rotation.normalized.z > 0)
+                transform.right = direction + new Vector2(0, -transform.parent.transform.parent.rotation.normalized.z * 2); // Actualizamos el Transform para que mire al puntero del Mouse
+            if (direction.normalized.y > 0f && transform.parent.transform.parent.rotation.normalized.z < 0)
+                transform.right = direction + new Vector2(0, transform.parent.transform.parent.rotation.normalized.z * 2); // Actualizamos el Transform para que mire al puntero del Mouse
+            */
 
             if (Input.GetKeyDown(KeyCode.Space)) // Al presionar
             {
