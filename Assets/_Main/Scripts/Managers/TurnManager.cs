@@ -82,6 +82,7 @@ namespace MSVJ1.Main
             if (canMove && (timer <= 0 || Input.GetKeyUp(KeyCode.Space))) // Si termino de Contar y puede hacer el Movimiento
             {
                 canMove = false; // Lo ponemos en FALSE porque ya está haciendo el Movimiento
+                characterController.ReduceGravity();
 
                 characterController.enabled = false; // Desactivamos el CharacterController
                 shootingController.enabled = true; // Activamos el ShootingController

@@ -31,6 +31,7 @@ namespace MSVJ1.Main
 
             if (xMovement != 0f)
             {
+                rb2D.gravityScale = 2;
                 Instantiate(dustEffect, transform.position, Quaternion.identity);
 
                 if (doOnce)
@@ -39,15 +40,23 @@ namespace MSVJ1.Main
                     doOnce = false;
                 }
             }
-            else
+            else if (!doOnce)
             {
                 soundManager.PlaySound("playerStop");
                 doOnce = true;
+                ReduceGravity();
             }
 
             // Hay dos pequeños problemas si ponemos superficies inclinadas:
             // 1) Si se detiene a mitad de la subida al dejar de moverse se va deslizando hacia abajo
             // 2) Si quiere desender, en lugar de deslizarse sale "flotando" en el Eje X
+        }
+
+        public void ReduceGravity()
+        {
+            rb2D.velocity = Vector2.zero;
+            rb2D.gravityScale = 0.01f;
+            print("se detuvo");
         }
     }
 }

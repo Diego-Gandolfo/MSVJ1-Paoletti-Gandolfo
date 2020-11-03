@@ -314,7 +314,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2209294293621570884}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: f7fa54cea82d4d046ad6a93628dac41a, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -337,7 +337,7 @@ Rigidbody2D:
   m_LinearDrag: 0.25
   m_AngularDrag: 0.25
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f7fa54cea82d4d046ad6a93628dac41a, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -360,7 +360,8 @@ MonoBehaviour:
     type: 3}
   projectileReflectEffect: {fileID: 7743295194000227307, guid: 9dbcfc00f4e1a1340aed5a49e0a61ae8,
     type: 3}
-  inertia: 1.25
+  inertia: 1.5
+  friction: 1.05
   canvas: {fileID: 5273046433315234624}
   text: {fileID: 3351031757549669277}
 --- !u!114 &4306711083233911040

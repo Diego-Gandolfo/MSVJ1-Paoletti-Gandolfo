@@ -26,6 +26,7 @@ namespace MSVJ1.Main
 
         [Header("Physics")]
         [SerializeField] private float inertia = 0f;
+        [SerializeField] private float friction = 0f;
         private Rigidbody2D rb2D = null; // Nuestro Rigidbody
 
 
@@ -96,7 +97,7 @@ namespace MSVJ1.Main
 
         private void OnCollisionStay2D(Collision2D collision)
         {
-            rb2D.velocity = new Vector2(rb2D.velocity.x / inertia, rb2D.velocity.y);
+            rb2D.velocity = new Vector2(rb2D.velocity.x / friction, rb2D.velocity.y);
         }
     }
 }
