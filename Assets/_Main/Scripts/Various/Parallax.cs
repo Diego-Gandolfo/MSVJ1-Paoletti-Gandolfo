@@ -25,17 +25,17 @@ namespace MSVJ1.Main
         private void FixedUpdate() // Lo cambie al FixedUpdate porque en el Update glitcheaba
         {
             Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
-            transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier,0f,0f);
+            transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier, 0f, 0f);
             lastCameraPosition = cameraTransform.position;
 
             float distanceWithCamera = cameraTransform.position.x - transform.position.x;
 
-            if(Mathf.Abs(distanceWithCamera) > width) // Le saqué el igual, a ver si con esto se arregla
+            if (Mathf.Abs((distanceWithCamera / (numberOfCopys / 2))) > width) // Le saqué el igual, a ver si con esto se arregla
             {
-                float movement = distanceWithCamera > 0 ? width * numberOfCopys : width * -numberOfCopys;
-               
-                transform.position += new Vector3 (movement,0f,0f);
+                float movement = (distanceWithCamera / (numberOfCopys / 2)) > 0 ? width * numberOfCopys : width * -numberOfCopys;
+
+                transform.position += new Vector3(movement, 0f, 0f);
             }
-         }
+        }
     }
 }
