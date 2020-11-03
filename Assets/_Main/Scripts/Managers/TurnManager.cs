@@ -81,6 +81,7 @@ namespace MSVJ1.Main
             // Movement
             if (canMove && (timer <= 0 || Input.GetKeyUp(KeyCode.Space))) // Si termino de Contar y puede hacer el Movimiento
             {
+                Input.ResetInputAxes();
                 canMove = false; // Lo ponemos en FALSE porque ya está haciendo el Movimiento
                 characterController.ReduceGravity();
 
@@ -101,13 +102,17 @@ namespace MSVJ1.Main
             // Shooting
             if (canShoot && (shootingController.doneShoot || timer <= 0)) // Si termino de Contar o toco el Space, y si puede Disparar
             {
+                Input.ResetInputAxes();
+
                 canShoot = false; // Lo ponemos en FALSE porque ya está haciendo el Disparar
 
-                shootingController.enabled = false; // Desactivamos el ShootingController
+                shootingController.ResetDirection();
 
                 if (shootingController.doneShoot)
                 {
                     soundManager.PlaySound("shoot");
+
+                    //shootingController.SetLineRenderer(0);
 
                     shootingController.doneShoot = false;
 
@@ -115,8 +120,12 @@ namespace MSVJ1.Main
                 }
                 else
                 {
+                    shootingController.SetLineRenderer(0);
+                    
                     doneExplotion = true;
                 }
+
+                shootingController.enabled = false; // Desactivamos el ShootingController
 
                 textText.text = ""; // Si el timer es igual a explotionDuration ponemos el titulo en blanco
                 textNumber.text = ""; // Si el timer es igual a explotionDuration ponemos el contador en blanco
@@ -141,6 +150,8 @@ namespace MSVJ1.Main
 
             if (!canStart && !canMove && !canShoot && doneExplotion) // Momentaneamente, si ya termino con todas las fases
             {
+                Input.ResetInputAxes();
+
                 doneExplotion = false;
 
                 currentTurn = currentTurn == 1 ? 2 : 1; // Si es el Turno del Jugador1 que ahora currentTurns sea 2 y si no es el Turno del Jugador1 entonces que ahora currentTurns sea 1

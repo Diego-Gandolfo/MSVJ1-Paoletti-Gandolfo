@@ -47,18 +47,21 @@ namespace MSVJ1.Main
             if (Input.GetKeyDown(KeyCode.Space)) // Al presionar
             {
                 currentForce = projectileForce; // Inicializamos currentForce
-                lineRenderer.SetPosition(1, new Vector3(currentForce / 5, 0, 0));
+                SetLineRenderer(currentForce / 5);
+                //lineRenderer.SetPosition(1, new Vector3(currentForce / 5, 0, 0));
             }
 
             if (Input.GetKey(KeyCode.Space)) // Al mantener presionado
             {
                 currentForce += projectileForceIncrement; // Incrementamos la currentForce
-                lineRenderer.SetPosition(1, new Vector3(currentForce / 5, 0, 0));
+                SetLineRenderer(currentForce / 5);
+                //lineRenderer.SetPosition(1, new Vector3(currentForce / 5, 0, 0));
             }
 
             if (Input.GetKeyUp(KeyCode.Space)) // Al soltar
             {
-                lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
+                SetLineRenderer(0);
+                //lineRenderer.SetPosition(1, new Vector3(0, 0, 0));
                 Instantiate(shootEffect, transform.position, transform.rotation);
                 doneShoot = true;
                 ProjectileBehavior projectileClone = Instantiate(projectile, projectileSpawnPoint.position, projectileSpawnPoint.rotation); // Instanciamos el Proyectil
@@ -91,6 +94,16 @@ namespace MSVJ1.Main
         public void SetHasExploted(bool value)
         {
             doneExplotion = value;
+        }
+
+        public void SetLineRenderer(float power)
+        {
+            lineRenderer.SetPosition(1, new Vector3(power, 0, 0));
+        }
+
+        public void ResetDirection()
+        {
+            transform.right = gameObject.transform.parent.transform.parent.name == "Player1" ? new Vector3(1, 0, 0) : new Vector3(-1, 0, 0);
         }
     }
 }
