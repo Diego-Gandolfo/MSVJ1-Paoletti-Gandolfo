@@ -56,7 +56,6 @@ namespace MSVJ1.Main
         {
             rb2D.velocity = Vector2.zero;
             rb2D.gravityScale = 0.01f;
-            print("se detuvo");
         }
     }
 }

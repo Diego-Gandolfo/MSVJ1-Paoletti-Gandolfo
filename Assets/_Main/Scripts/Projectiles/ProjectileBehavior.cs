@@ -28,31 +28,37 @@ namespace MSVJ1.Main
         [SerializeField] private float inertia = 0f;
         [SerializeField] private float friction = 0f;
         private Rigidbody2D rb2D = null; // Nuestro Rigidbody
-
-
+        /*
         [Header("Canvas")]
         [SerializeField] private Canvas canvas;
         [SerializeField] private TextMeshProUGUI text;
-
-
+        */
+        [Header("Canvas Settings")]
+        private Text textText = null; // El Texto del Canvas que usamos para los Titulos o Mensajes
+        private Text textNumber = null; // El Texto del Canvas que usamos para el Contador
+        
         public Action OnProjectileExplotion2;
         public Action OnProjectileReflect;
 
         private void Awake()
         {
             rb2D = GetComponent<Rigidbody2D>(); // Inicializamos el Rigidbody
-            canvas.worldCamera = Camera.main;
+            //canvas.worldCamera = Camera.main;
         }
 
         void Update() // Esto es lo que traje del Script de Dante
         {
+            textText.text = "La bomba detonara en";
             currentExplosionTime += Time.deltaTime;
 
             int intTimer = (int)(explosionTime - currentExplosionTime) + 1; // Acá guarado en un int el valor entero de timer y le sumo 1, para que la cuenta no termine en 0 en el Canvas
-            text.text = intTimer.ToString(); // Ponemos en el Canvas el valor de intTimer
+            //text.text = intTimer.ToString(); // Ponemos en el Canvas el valor de intTimer
+            textNumber.text = intTimer.ToString(); // Ponemos en el Canvas el valor de intTimer
 
             if (currentExplosionTime >= explosionTime)
             {
+                textText.text = "";
+                textNumber.text = "";
                 Instantiate(exploteEffect, transform.position, transform.rotation); // Instanciar Efecto de Particulas para la Explosion
                 OnProjectileExplotion2.Invoke();
             }
@@ -62,6 +68,8 @@ namespace MSVJ1.Main
         {
             if (canExplote && Mathf.Abs(rb2D.velocity.magnitude) <= minVelocityMagnitude && Mathf.Abs(lastVelocity.magnitude) <= minVelocityMagnitude) // Si puede explotar y la magnitud absoluta de velocidad actual y de la ultima velocidad es menor o igual a la velocidad minima
             {
+                textText.text = "";
+                textNumber.text = "";
                 Instantiate(exploteEffect, transform.position, transform.rotation); // Instanciar Efecto de Particulas para la Explosion
                 OnProjectileExplotion2.Invoke();
                 //Destroy(gameObject);
@@ -98,6 +106,12 @@ namespace MSVJ1.Main
         private void OnCollisionStay2D(Collision2D collision)
         {
             rb2D.velocity = new Vector2(rb2D.velocity.x / friction, rb2D.velocity.y);
+        }
+
+        public void AsignText(Text text, Text number)
+        {
+            textText = text;
+            textNumber = number;
         }
     }
 }

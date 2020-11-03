@@ -59,8 +59,6 @@ namespace MSVJ1.Main
                         lifeController.GetDamage((explosionRadius - distance) * (damage / explosionRadius));
                     //lifeController.GetDamage((damage * (Vector3.Distance(collider.transform.position, transform.position))) / explosionRadius );
                     //lifeController.GetDamage(damage / (Vector3.Distance ( collider.transform.position, transform.position)));
-
-                    print(collider.name);
                 }
             }    
 

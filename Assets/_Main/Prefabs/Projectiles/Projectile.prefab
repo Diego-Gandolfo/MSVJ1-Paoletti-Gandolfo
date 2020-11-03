@@ -175,7 +175,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6293112922250392194
 RectTransform:
   m_ObjectHideFlags: 0
@@ -362,8 +362,6 @@ MonoBehaviour:
     type: 3}
   inertia: 1.5
   friction: 1.05
-  canvas: {fileID: 5273046433315234624}
-  text: {fileID: 3351031757549669277}
 --- !u!114 &4306711083233911040
 MonoBehaviour:
   m_ObjectHideFlags: 0

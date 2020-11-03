@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Cinemachine;
 
 namespace MSVJ1.Main
@@ -26,6 +27,10 @@ namespace MSVJ1.Main
         [Header("SoundManager")]
         [SerializeField] private SoundManager soundManager = null;
 
+        [Header("Canvas Settings")]
+        [SerializeField] private Text textText = null; // El Texto del Canvas que usamos para los Titulos o Mensajes
+        [SerializeField] private Text textNumber = null; // El Texto del Canvas que usamos para el Contador
+
         private void Awake()
         {
             if (cinemaManager == null) Debug.LogError($"{gameObject.transform.parent.transform.parent.name}.{gameObject.transform.parent.name}.{gameObject.name} no tiene CinemaMachineManager<CM vcam1> asignado en ShootingController");
@@ -36,7 +41,7 @@ namespace MSVJ1.Main
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition); // Almacenamos las coordenadas de donde se encuentra el puntero del Mouse
 
             Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y); // Calculamos la dirección a la que hay que mirar
-
+            
             transform.right = direction; // Actualizamos el Transform para que mire al puntero del Mouse
 
             if (Input.GetKeyDown(KeyCode.Space)) // Al presionar
@@ -63,6 +68,7 @@ namespace MSVJ1.Main
                 projectileClone.DoShootProjectile(transform.right, currentForce); // Le pasamos la direccion y la potencia con la que tiene que ser lanzado
                 projectileClone.OnProjectileExplotion2 += OnProjectileExplotionHandler2;
                 projectileClone.OnProjectileReflect += OnProjectileReflectHandler;
+                projectileClone.AsignText(textText, textNumber);
                 doneExplotion = false;
             }
         }
