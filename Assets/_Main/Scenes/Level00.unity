@@ -469,6 +469,11 @@ PrefabInstance:
       propertyPath: textNumber
       value: 
       objectReference: {fileID: 56656755}
+    - target: {fileID: 1267883294196214772, guid: 3c999a80d4d6c744fa419d4757c130f1,
+        type: 3}
+      propertyPath: projectileForceIncrement
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1491986538631634726, guid: 3c999a80d4d6c744fa419d4757c130f1,
         type: 3}
       propertyPath: soundManager
@@ -6608,6 +6613,11 @@ PrefabInstance:
       propertyPath: textNumber
       value: 
       objectReference: {fileID: 56656755}
+    - target: {fileID: 1267883294196214772, guid: a4d283ae2b660b54eb2840e9f6eb495e,
+        type: 3}
+      propertyPath: projectileForceIncrement
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 1491986538631634726, guid: a4d283ae2b660b54eb2840e9f6eb495e,
         type: 3}
       propertyPath: soundManager
