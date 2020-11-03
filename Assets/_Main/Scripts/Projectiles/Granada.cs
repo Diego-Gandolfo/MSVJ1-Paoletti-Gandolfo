@@ -39,7 +39,7 @@ namespace MSVJ1.Main
             {
                 Rigidbody2D rigidbody = collider.gameObject.GetComponent<Rigidbody2D>();
 
-                if(rigidbody != null)
+                if(rigidbody != null && !collider.gameObject.CompareTag("Player"))
                 {
                     Vector3 direction = collider.transform.position - transform.position;
                     float distance = direction.magnitude;

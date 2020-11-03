@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6427085199905124439}
   - component: {fileID: 6427085199905124436}
   - component: {fileID: -6282331791546630519}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: broken-box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 1798742239
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8e5e4f9c8dcd2ae4e9bd5017487262fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ae8d6a0bb273c844b68ce23a4264247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,18 +96,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.006228447, y: -0.006227255}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.05, y: 1.54}
+    oldSize: {x: 4.1, y: 3.08}
     newSize: {x: 2.05, y: 1.54}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.05, y: 1.54}
+  m_Size: {x: 4.0926, y: 3.0844016}
   m_EdgeRadius: 0
 --- !u!50 &-6282331791546630519
 Rigidbody2D:

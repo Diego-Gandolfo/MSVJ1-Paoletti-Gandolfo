@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9222271881558130335}
   - component: {fileID: 5699104843369596350}
   - component: {fileID: 8185530139662478433}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Vigas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 1798742239
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1f946ef4f8c632543bd478846afba45d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1e0769bb720fa0b44b1e28229e81adb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,16 +95,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.013253212, y: -0.013259888}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.88, y: 0.41}
+    oldSize: {x: 13.76, y: 0.82}
     newSize: {x: 6.88, y: 0.41}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.88, y: 0.41}
+  m_Size: {x: 13.748579, y: 0.8077946}
   m_EdgeRadius: 0

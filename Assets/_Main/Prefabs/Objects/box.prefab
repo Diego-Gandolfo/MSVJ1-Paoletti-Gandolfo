@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 6810621533376627065}
   - component: {fileID: 6810621533376627064}
   - component: {fileID: 158346066343070978}
-  m_Layer: 0
+  - component: {fileID: 8310684775000316981}
+  - component: {fileID: 636765360518348109}
+  m_Layer: 11
   m_Name: box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 1798742239
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f5834d31c445f0e4c9f98d108be370df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 92453e413c694874db55795b97ee63d6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0098667145, y: -0.00986886}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.05, y: 1.54}
+    oldSize: {x: 4.1, y: 3.08}
     newSize: {x: 2.05, y: 1.54}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.05, y: 1.54}
+  m_Size: {x: 4.1225014, y: 3.059832}
   m_EdgeRadius: 0
 --- !u!50 &158346066343070978
 Rigidbody2D:
@@ -130,3 +132,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8310684775000316981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810621533376627070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b66c2699932934094c5cf927834b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLife: 100
+  currentLife: 0
+--- !u!114 &636765360518348109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6810621533376627070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55295afe4e663654396fe375f77cef78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifePorcentage: 50
+  sprite: {fileID: 21300000, guid: 1ae8d6a0bb273c844b68ce23a4264247, type: 3}
