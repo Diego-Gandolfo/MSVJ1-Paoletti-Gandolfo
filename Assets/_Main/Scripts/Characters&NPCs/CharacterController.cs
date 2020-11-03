@@ -32,7 +32,7 @@ namespace MSVJ1.Main
             if (xMovement != 0f)
             {
                 rb2D.gravityScale = 2;
-                Instantiate(dustEffect, transform.position, Quaternion.identity);
+                Instantiate(dustEffect, transform.position, transform.rotation);
 
                 if (doOnce)
                 {
