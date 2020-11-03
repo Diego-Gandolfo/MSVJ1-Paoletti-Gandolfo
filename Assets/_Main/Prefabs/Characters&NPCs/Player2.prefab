@@ -678,6 +678,9 @@ MonoBehaviour:
   cinemaManager: {fileID: 0}
   offsetCamera: {x: 0, y: 0}
   projectileDistanceView: 25
+  soundManager: {fileID: 0}
+  textText: {fileID: 0}
+  textNumber: {fileID: 0}
 --- !u!1 &5779510006759756470
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +785,7 @@ SpriteRenderer:
   m_SortingLayerID: 1030494483
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f4e444f7e44f96d449d97322e0441ce7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6f98891d45f3d3e4085813412fe3e31e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
